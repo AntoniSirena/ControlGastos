@@ -29,11 +29,15 @@
               "node_modules/ionicons/css/ionicons.css",
               "node_modules/prismjs/themes/prism-tomorrow.css",
               "node_modules/admin-lte-css/dist/css/AdminLTE.css",
-              "node_modules/admin-lte-css/dist/css/skins/_all-skins.css"            ],
+              "node_modules/admin-lte-css/dist/css/skins/_all-skins.css",
+              "node_modules/datatables.net-dt/css/jquery.dataTables.css"            ],
             "scripts": [
               "node_modules/prismjs/prism.js",
-              "node_modules/prismjs/components/prism-typescript.js"
-
+              "node_modules/prismjs/components/prism-typescript.js",
+              "node_modules/prismjs/components/prism-typescript.js",
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/datatables.net/js/jquery.dataTables.js"
+              
               ]
           },
           "configurations": {

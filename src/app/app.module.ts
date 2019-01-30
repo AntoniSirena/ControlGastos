@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { LoadingPageModule, MaterialBarModule } from 'angular-loading-page';
 import { TiposConceptosComponent } from './mantenimientos/tipos-conceptos/tipos-conceptos.component';
 
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { TiposConceptosComponent } from './mantenimientos/tipos-conceptos/tipos-
     AppRoutingModule,
     CoreModule,
     LayoutModule.forRoot(adminLteConf),
-    LoadingPageModule, MaterialBarModule
+    LoadingPageModule, MaterialBarModule,
+    DataTablesModule
   ],
   declarations: [
     AppComponent,
