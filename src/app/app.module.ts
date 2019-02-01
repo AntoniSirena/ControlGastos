@@ -16,6 +16,8 @@ import { TiposConceptosComponent } from './mantenimientos/tipos-conceptos/tipos-
 
 import { DataTablesModule } from 'angular-datatables';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -23,7 +25,8 @@ import { DataTablesModule } from 'angular-datatables';
     CoreModule,
     LayoutModule.forRoot(adminLteConf),
     LoadingPageModule, MaterialBarModule,
-    DataTablesModule
+    DataTablesModule,
+    FormsModule
   ],
   declarations: [
     AppComponent,
