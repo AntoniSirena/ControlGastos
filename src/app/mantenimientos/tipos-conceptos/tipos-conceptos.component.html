@@ -2,8 +2,9 @@
 
 <div id="formulario" class="container-fluid">
   <div class="row">
-        <div class="col-xs-10 col-sm-4 col-md-8">
-                    <div class="col-xs-10 col-sm-4 col-md-2">
+        <div class="col-xs-10 col-sm-10 col-md-8">
+            
+                    <div class="col-xs-2 col-sm-2 col-md-2">
                         <div class="form-group">
                             <label for="controlCodigo">Codigo</label>
                             <input type="text" 
@@ -14,7 +15,7 @@
                         </div>
                    </div>
     
-                   <div class="col-xs-10 col-sm-4 col-md-6">
+                   <div class="col-xs-4 col-sm-4 col-md-6">
                         <div class="form-group">
                             <label for="controlDescripcion">Descripcion</label>
                             <input type="text" 
@@ -24,6 +25,15 @@
                             required >
                         </div>
                     </div>
+
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="form-group">
+                                <label for="controlTiposGastos">Tipos de Gastos</label>
+                                <select class="form-control" id="tiposGastos" [(ngModel)]="tipoConcepto.TipoGastoId"  required>
+                                    <option *ngFor="let item of tiposGastos" [value]="item.Id">{{item.Descripcion}}</option>
+                                </select>
+                            </div>
+                        </div>
               
             </div>
   </div>
@@ -57,6 +67,7 @@
     <th>Eliminar</th>
     <th>Codigo</th>
     <th>Descripcion</th>
+    <th>Gasto al que pertenece</th>
   </tr>
 </thead>
 <tbody>
@@ -65,6 +76,7 @@
     <td> <button id="Eliminar" (click)="eliminarTipoConcepto(tiposConcepto.Id)" class="btn btn-danger">Elim</button> </td>
     <td>{{ tiposConcepto.Codigo }}</td>
     <td>{{ tiposConcepto.Descripcion }}</td>
+    <td>{{ tiposConcepto.TiposGastos.Descripcion }}</td>
   </tr>
 </tbody>
 </table>

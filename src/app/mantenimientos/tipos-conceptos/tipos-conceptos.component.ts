@@ -18,22 +18,28 @@ export class TiposConceptosComponent implements OnInit, OnDestroy  {
 
 
   //Variable globales
-  tiposConceptos: any[] = [];
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
-  tipoConcepto: any = {Codigo:'' ,Descripcion:'', Id:''};
+
+  tiposConceptos: any[] = [];
+  tiposGastos : any[] = [];
+  tipoConcepto: any = {Codigo:'' ,Descripcion:'', Id:'', TipoGastoId: ''};
+
 
 
 
  //Primer metodo que se ejecuta al momento de cargar el sistema
   ngOnInit() {
 
+    this.obtenerTiposGastos();
+
     //Bloque para renderisar el DataTable en el html
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 5,
+      pageLength: 8,
       processing: true
     };
+
     this.tiposConceptosService.obtenerTiposConceptosService().subscribe(data => {
       this.tiposConceptos = data;
       this.dtTrigger.next();
@@ -44,7 +50,9 @@ export class TiposConceptosComponent implements OnInit, OnDestroy  {
     $('#actualizarTipoConcepto').attr('disabled', true);
 
 
+
   }
+
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
@@ -52,12 +60,20 @@ export class TiposConceptosComponent implements OnInit, OnDestroy  {
   
 
 
+  //obtener Tipos de Gastos
+  obtenerTiposGastos(){ 
+    this.tiposConceptosService.obtenerTiposGastosService().subscribe(resultado => {
+          this.tiposGastos = resultado;
+        },       
+        error => { console.log(JSON.stringify(error));
+        });   
+    }
+
   
  //Agregar
     agregarTipoConcepto(){ 
     this.tiposConceptosService.agregarTipoConceptoService(this.tipoConcepto).subscribe(resultado => {
         this.reset();
-        $('#datatable').DataTable().draw(); //Llamada al DataTable para refrescarlo
         },       
         error => { console.log(JSON.stringify(error));
         });   
@@ -78,12 +94,13 @@ export class TiposConceptosComponent implements OnInit, OnDestroy  {
       });  
   }
 
- //EditarTipoPersonas
+ //Editar
     editarTipoConcepto(identificador){
       this.tiposConceptosService.obtenerTipoConceptoByIdService(identificador).subscribe(resultado => {
         this.tipoConcepto.Id = resultado[0].Id;
         this.tipoConcepto.Codigo = resultado[0].Codigo;
         this.tipoConcepto.Descripcion = resultado[0].Descripcion;
+        this.tipoConcepto.TipoGastoId = resultado[0].TipoGastoId;
 
      //Sentencia para deshabilitar el boton Agregar al hacer clic en el boton editar
      $('#agregarTipoConcepto').attr('disabled', true);
@@ -98,7 +115,6 @@ export class TiposConceptosComponent implements OnInit, OnDestroy  {
       }
 
 
-
   //Eliminar
   eliminarTipoConcepto(identificador){
     this.tiposConceptosService.eliminarTipoConceptoService(identificador).subscribe(resultado => {
@@ -108,12 +124,12 @@ export class TiposConceptosComponent implements OnInit, OnDestroy  {
     
    }
 
-
   //Metodo para limpiar las variables
   reset()
   {
     this.tipoConcepto.Codigo = '';
     this.tipoConcepto.Descripcion = '';
+    this.tipoConcepto.TipoGastoId = '';
   }
 
 
