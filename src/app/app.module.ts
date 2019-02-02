@@ -17,6 +17,7 @@ import { TiposConceptosComponent } from './mantenimientos/tipos-conceptos/tipos-
 import { DataTablesModule } from 'angular-datatables';
 
 import { FormsModule } from '@angular/forms';
+import { PersonaComponent } from './mantenimientos/persona/persona.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     HomeComponent,
-    TiposConceptosComponent
+    TiposConceptosComponent,
+    PersonaComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

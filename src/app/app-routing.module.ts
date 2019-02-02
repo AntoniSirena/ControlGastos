@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { TiposConceptosComponent } from './mantenimientos/tipos-conceptos/tipos-conceptos.component';
+import { PersonaComponent } from './mantenimientos/persona/persona.component';
+
 
 
 const routes: Routes = [
@@ -127,7 +129,16 @@ const routes: Routes = [
         data: {
           title: 'Tipos de conceptos',
         }
+      },
+
+      {
+        path: 'persona',
+        component: PersonaComponent,
+        data: {
+          title: 'Personas',
+        }
       }
+
     ]
   }, 
   
