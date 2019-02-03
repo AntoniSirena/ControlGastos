@@ -1,0 +1,80 @@
+
+
+<div id="formulario" class="container-fluid">
+    <div class="row">
+          <div class="col-xs-10 col-sm-10 col-md-8">
+              
+                      <div class="col-xs-2 col-sm-2 col-md-2">
+                          <div class="form-group">
+                              <label for="controlCodigo">Codigo</label>
+                              <input type="text" 
+                              [(ngModel)]="area.Codigo"  
+                              class="form-control" 
+                              name="codigo" >
+                          </div>
+                     </div>
+      
+                     <div class="col-xs-4 col-sm-4 col-md-3">
+                          <div class="form-group">
+                              <label for="controlDescripcion">Descripcion</label>
+                              <input type="text" 
+                              [(ngModel)]="area.Descripcion" 
+                              class="form-control" 
+                              name="descripcion"
+                              required >
+                          </div>
+                      </div>
+  
+                      <div class="col-xs-4 col-sm-4 col-md-3">
+                              <div class="form-group">
+                                  <label for="controlPersona">Persona encargada</label>
+                                  <select class="form-control" id="persona" [(ngModel)]="area.PersonaId"  required>
+                                      <option *ngFor="let item of personas" [value]="item.Id">{{item.NombreCompleto}}</option>
+                                  </select>
+                              </div>
+                          </div>
+                
+              </div>
+    </div>
+  
+    <div class="row">
+          <div class="col-xs-8 col-sm-4 col-md-4">
+                      <div class="col-xs-4 col-sm-2 col-md-2">
+                        <button (click)="agregarArea()" class="btn btn-primary" id="agregarArea">Agregar</button>
+                      </div>
+  
+                     <div class="col-xs-4 col-sm-2 col-md-2">
+                       <button (click)="actualizarArea()" class="btn btn-primary"  id="actualizarArea">Actualizar</button>
+                      </div>
+                
+              </div>
+    </div>
+  
+  
+</div>
+
+  
+<br>
+<br>
+<br>
+<table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
+[dtTrigger]="dtTrigger" id="datatable">
+<thead>
+  <tr>
+    <th>Editar</th>
+    <th>Eliminar</th>
+    <th>Codigo</th>
+    <th>Descripcion</th>
+    <th>Persona encargada</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let area of areas">
+    <td> <button id="editar" (click)="editarArea(area.Id)" class="btn btn-primary">Edit</button> </td>
+    <td> <button id="Eliminar" (click)="eliminarArea(area.Id)" class="btn btn-danger">Elim</button> </td>
+    <td>{{ area.Codigo }}</td>
+    <td>{{ area.Descripcion }}</td>
+    <td>{{ area.Persona.NombreCompleto}}</td>
+  </tr>
+</tbody>
+</table>

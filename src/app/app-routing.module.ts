@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { TiposConceptosComponent } from './mantenimientos/tipos-conceptos/tipos-conceptos.component';
 import { PersonaComponent } from './mantenimientos/persona/persona.component';
+import { AreaComponent } from './mantenimientos/area/area.component';
+
 
 
 
@@ -136,6 +138,14 @@ const routes: Routes = [
         component: PersonaComponent,
         data: {
           title: 'Personas',
+        }
+      },
+
+      {
+        path: 'area',
+        component: AreaComponent,
+        data: {
+          title: 'Areas',
         }
       }
 

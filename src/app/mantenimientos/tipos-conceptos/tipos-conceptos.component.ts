@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { Http, Response } from '@angular/http';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { TiposConceptosService } from 'src/app/servicios/tiposConceptos/tipos-conceptos.service';
@@ -48,8 +47,6 @@ export class TiposConceptosComponent implements OnInit, OnDestroy  {
     
     //Sentencia para deshabilitar el boton actualizar cuando cargue el sistema
     $('#actualizarTipoConcepto').attr('disabled', true);
-
-
 
   }
 

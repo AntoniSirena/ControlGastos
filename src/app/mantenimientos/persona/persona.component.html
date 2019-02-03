@@ -1,1 +1,142 @@
 
+
+<div id="formulario" class="container-fluid">
+        <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-8">
+                  
+                          <div class="col-xs-3 col-sm-3 col-md-3">
+                              <div class="form-group">
+                                  <label for="PrimerNombre">Primer Nombre</label>
+                                  <input type="text" 
+                                  [(ngModel)]="persona.PrimerNombre"  
+                                  class="form-control" 
+                                  name="PrimerNombre" >
+                              </div>
+                         </div>
+          
+                         <div class="col-xs-3 col-sm-3 col-md-3">
+                              <div class="form-group">
+                                  <label for="SegundoNombre">Segundo Nombre</label>
+                                  <input type="text" 
+                                  [(ngModel)]="persona.SegundoNombre" 
+                                  class="form-control" 
+                                  name="SegundoNombre"
+                                  required >
+                              </div>
+                          </div>
+
+                          <div class="col-xs-3 col-sm-3 col-md-3">
+                                <div class="form-group">
+                                    <label for="PrimerApellido">Primer Apellido</label>
+                                    <input type="text" 
+                                    [(ngModel)]="persona.PrimerApellido" 
+                                    class="form-control" 
+                                    name="PrimerApellido"
+                                    required >
+                                </div>
+                            </div>
+
+                            <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <div class="form-group">
+                                        <label for="SegundoApellido">Segundo Apellido</label>
+                                        <input type="text" 
+                                        [(ngModel)]="persona.SegundoApellido" 
+                                        class="form-control" 
+                                        name="SegundoApellido"
+                                        required >
+                                    </div>
+                                </div>               
+                  </div>
+        </div>
+      
+
+        <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-8">
+                    
+                            <div class="col-xs-3 col-sm-3 col-md-3">
+                                <div class="form-group">
+                                    <label for="FechaNacimiento">Fecha de Nacimiento</label>
+                                    <input type="date" 
+                                    [(ngModel)]="persona.FechaNacimiento"  
+                                    class="form-control" 
+                                    name="FechaNacimiento" >
+                                </div>
+                           </div>
+            
+                           <div class="col-xs-3 col-sm-3 col-md-3">
+                                <div class="form-group">
+                                    <label for="Telefono">Telefono</label>
+                                    <input type="tel" 
+                                    [(ngModel)]="persona.Telefono" 
+                                    class="form-control" 
+                                    name="Telefono"
+                                    required >
+                                </div>
+                            </div>
+  
+                            <div class="col-xs-3 col-sm-6 col-md-6">
+                                  <div class="form-group">
+                                      <label for="Direccion">Direccion</label>
+                                      <input type="text" 
+                                      [(ngModel)]="persona.Direccion" 
+                                      class="form-control" 
+                                      name="Direccion"
+                                      required >
+                                  </div>
+                              </div>
+            
+                    </div>
+          </div>
+
+
+        <div class="row">
+              <div class="col-xs-8 col-sm-8 col-md-4">
+                          <div class="col-xs-6 col-sm-6 col-md-2">
+                            <button (click)="agregarPersona()" class="btn btn-primary" id="agregarPersona">Agregar</button>
+                          </div>
+      
+                         <div class="col-xs-6 col-sm-6 col-md-2">
+                           <button (click)="actualizarPersona()" class="btn btn-primary"  id="actualizarPersona">Actualizar</button>
+                          </div>
+                    
+                  </div>
+        </div>
+      
+      
+      </div>
+      
+
+
+
+<br>
+<br>
+<br>
+<table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
+[dtTrigger]="dtTrigger" id="datatable">
+<thead>
+  <tr>
+    <th>Editar</th>
+    <th>Eliminar</th>
+    <th>PrimerNombre</th>
+    <th>SegundoNombre</th>
+    <th>PrimerApellido</th>
+    <th>SegundoApellido</th>
+    <th>FechaNacimiento</th>
+    <th>Telefono</th>
+    <th>Direccion</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let persona of personas">
+    <td> <button id="editar" (click)="editarPersona(persona.Id)" class="btn btn-primary">Edit</button> </td>
+    <td> <button id="Eliminar" (click)="eliminarPersona(persona.Id)" class="btn btn-danger">Elim</button> </td>
+    <td>{{persona.PrimerNombre}}</td>
+    <td>{{persona.SegundoNombre}}</td>
+    <td>{{persona.PrimerApellido}}</td>
+    <td>{{persona.SegundoApellido}}</td>
+    <td>{{persona.FechaNacimiento | date}}</td>
+    <td>{{persona.Telefono}}</td>
+    <td>{{persona.Direccion}}</td>
+  </tr>
+</tbody>
+</table>

@@ -10,12 +10,11 @@
                             <input type="text" 
                             [(ngModel)]="tipoConcepto.Codigo"  
                             class="form-control" 
-                            name="codigo"
-                            ng >
+                            name="codigo" >
                         </div>
                    </div>
     
-                   <div class="col-xs-4 col-sm-4 col-md-6">
+                   <div class="col-xs-4 col-sm-4 col-md-3">
                         <div class="form-group">
                             <label for="controlDescripcion">Descripcion</label>
                             <input type="text" 
@@ -26,7 +25,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xs-4 col-sm-4 col-md-4">
+                    <div class="col-xs-4 col-sm-4 col-md-3">
                             <div class="form-group">
                                 <label for="controlTiposGastos">Tipos de Gastos</label>
                                 <select class="form-control" id="tiposGastos" [(ngModel)]="tipoConcepto.TipoGastoId"  required>
@@ -40,11 +39,11 @@
 
   <div class="row">
         <div class="col-xs-8 col-sm-4 col-md-4">
-                    <div class="col-xs-8 col-sm-4 col-md-2">
+                    <div class="col-xs-4 col-sm-2 col-md-2">
                       <button (click)="agregarTipoConcepto()" class="btn btn-primary" id="agregarTipoConcepto">Agregar</button>
                     </div>
 
-                   <div class="col-xs-8 col-sm-4 col-md-2">
+                   <div class="col-xs-4 col-sm-2 col-md-2">
                      <button (click)="actualizarTipoConcepto()" class="btn btn-primary"  id="actualizarTipoConcepto">Actualizar</button>
                     </div>
               

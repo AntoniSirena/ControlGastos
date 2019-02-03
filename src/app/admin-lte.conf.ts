@@ -32,7 +32,9 @@ export const adminLteConf = {
     {label: 'Mantenimientos', iconClasses: 'fa fa-files-o', 
     children: [
         {label: 'Tipos de conceptos', route: 'mantenimientos/tipos-conceptos'},
-        {label: 'Personas', route: 'mantenimientos/persona'}
+        {label: 'Personas', route: 'mantenimientos/persona'},
+        {label: 'Areas', route: 'mantenimientos/area'}
+
         
     ]}  ]
 };

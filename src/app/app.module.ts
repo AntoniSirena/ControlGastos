@@ -18,6 +18,7 @@ import { DataTablesModule } from 'angular-datatables';
 
 import { FormsModule } from '@angular/forms';
 import { PersonaComponent } from './mantenimientos/persona/persona.component';
+import { AreaComponent } from './mantenimientos/area/area.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { PersonaComponent } from './mantenimientos/persona/persona.component';
     AppComponent,
     HomeComponent,
     TiposConceptosComponent,
-    PersonaComponent
+    PersonaComponent,
+    AreaComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
