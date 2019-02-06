@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { PeriodosService } from 'src/app/servicios/periodos/periodos.service';
+import { FormsModule } from '@angular/forms';
+
 
 declare var $;
 
