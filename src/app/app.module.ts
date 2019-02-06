@@ -16,9 +16,12 @@ import { TiposConceptosComponent } from './mantenimientos/tipos-conceptos/tipos-
 
 import { DataTablesModule } from 'angular-datatables';
 
+import { FilterPipeModule } from 'ngx-filter-pipe';
+
 import { FormsModule } from '@angular/forms';
 import { PersonaComponent } from './mantenimientos/persona/persona.component';
 import { AreaComponent } from './mantenimientos/area/area.component';
+import { PeriodosComponent } from './mantenimientos/periodos/periodos.component';
 
 @NgModule({
   imports: [
@@ -28,14 +31,16 @@ import { AreaComponent } from './mantenimientos/area/area.component';
     LayoutModule.forRoot(adminLteConf),
     LoadingPageModule, MaterialBarModule,
     DataTablesModule,
-    FormsModule
+    FormsModule,
+    FilterPipeModule
   ],
   declarations: [
     AppComponent,
     HomeComponent,
     TiposConceptosComponent,
     PersonaComponent,
-    AreaComponent
+    AreaComponent,
+    PeriodosComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

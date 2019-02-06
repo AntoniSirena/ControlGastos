@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { TiposConceptosComponent } from './mantenimientos/tipos-conceptos/tipos-conceptos.component';
 import { PersonaComponent } from './mantenimientos/persona/persona.component';
 import { AreaComponent } from './mantenimientos/area/area.component';
-
+import { PeriodosComponent } from './mantenimientos/periodos/periodos.component';
 
 
 
@@ -146,6 +146,14 @@ const routes: Routes = [
         component: AreaComponent,
         data: {
           title: 'Areas',
+        }
+      },
+
+      {
+        path: 'periodo',
+        component: PeriodosComponent,
+        data: {
+          title: 'Periodos',
         }
       }
 

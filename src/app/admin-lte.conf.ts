@@ -33,7 +33,9 @@ export const adminLteConf = {
     children: [
         {label: 'Tipos de conceptos', route: 'mantenimientos/tipos-conceptos'},
         {label: 'Personas', route: 'mantenimientos/persona'},
-        {label: 'Areas', route: 'mantenimientos/area'}
+        {label: 'Areas', route: 'mantenimientos/area'},
+        {label: 'Periodos', route: 'mantenimientos/periodo'}
+
 
         
     ]}  ]

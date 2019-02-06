@@ -1,0 +1,98 @@
+
+
+<div id="formulario" class="container-fluid">
+    <div class="row">
+          <div class="col-xs-10 col-sm-10 col-md-8">
+              
+                      <div class="col-xs-2 col-sm-2 col-md-2">
+                          <div class="form-group">
+                              <label for="controlCodigo">Codigo</label>
+                              <input type="text" 
+                              [(ngModel)]="periodo.Codigo"  
+                              class="form-control" 
+                              name="codigo" >
+                          </div>
+                     </div>
+      
+                     <div class="col-xs-4 col-sm-4 col-md-3">
+                          <div class="form-group">
+                              <label for="controlDescripcion">Descripcion</label>
+                              <input type="text" 
+                              [(ngModel)]="periodo.Descripcion" 
+                              class="form-control" 
+                              name="descripcion"
+                              required >
+                          </div>
+                      </div>
+
+                      <div class="col-xs-4 col-sm-4 col-md-3">
+                          <div class="form-group">
+                              <label for="controlFechaApertura">Fecha de apertura</label>
+                              <input type="date" 
+                              [(ngModel)]="periodo.FechaApertura" 
+                              class="form-control" 
+                              name="fechaApertura"
+                              required >
+                          </div>
+                      </div>
+
+                      <div class="col-xs-4 col-sm-4 col-md-3">
+                          <div class="form-group">
+                              <label for="controlFechaCierre">Fecha de cierre</label>
+                              <input type="date" 
+                              [(ngModel)]="periodo.FechaCierre" 
+                              class="form-control" 
+                              name="fechaCierre"
+                              required >
+                          </div>
+                      </div>
+             
+              </div>
+    </div>
+  
+    <div class="row">
+          <div class="col-xs-8 col-sm-4 col-md-4">
+                      <div class="col-xs-4 col-sm-2 col-md-2">
+                        <button (click)="agregarPeriodo()" class="btn btn-primary" id="agregarPeriodo">Agregar</button>
+                      </div>
+  
+                     <div class="col-xs-4 col-sm-2 col-md-2">
+                       <button (click)="actualizarPeriodo()" class="btn btn-primary"  id="actualizarPeriodo">Actualizar</button>
+                      </div>
+                
+              </div>
+    </div>
+  
+  
+  </div>
+
+
+
+<br>
+<br>
+<br>
+<table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
+[dtTrigger]="dtTrigger" id="datatable">
+<thead>
+  <tr>
+    <th>Editar</th>
+    <th>Eliminar</th>
+    <th>Codigo</th>
+    <th>Descripcion</th>
+    <th>Fecha de apertura</th>
+    <th>Fecha de cierre</th>
+    <th>Statu</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let periodo of periodos">
+    <td> <button id="editar" (click)="editarPeriodo(periodo.Id)" class="btn btn-primary">Edit</button> </td>
+    <td> <button id="Eliminar" (click)="eliminarPeriodo(periodo.Id)" class="btn btn-danger">Elim</button> </td>
+    <td>{{ periodo.Codigo }}</td>
+    <td>{{ periodo.Descripcion }}</td>
+    <td>{{ periodo.FechaApertura }}</td>
+    <td>{{ periodo.FechaCierre }}</td>
+    <td>{{ periodo.Statuses.Descripcion }}</td>
+  </tr>
+</tbody>
+</table>

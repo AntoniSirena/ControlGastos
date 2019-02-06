@@ -29,7 +29,7 @@
                               <div class="form-group">
                                   <label for="controlPersona">Persona encargada</label>
                                   <select class="form-control" id="persona" [(ngModel)]="area.PersonaId"  required>
-                                      <option *ngFor="let item of personas" [value]="item.Id">{{item.NombreCompleto}}</option>
+                                      <option *ngFor="let item of personas | filterBy: filter" [value]="item.Id">{{item.NombreCompleto}}</option>
                                   </select>
                               </div>
                           </div>
