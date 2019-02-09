@@ -39,7 +39,8 @@ export const adminLteConf = {
 
     {label: 'Transacción', iconClasses: 'fa fa-files-o', 
     children: [
-        {label: 'Registrar transacción', route: 'mantenimientos/transaccion'}     
+        {label: 'Registrar transacción', route: 'mantenimientos/transaccion'},
+        {label: 'Anular transacción', route: 'mantenimientos/anular-transaccion'}     
     ]}
 
     

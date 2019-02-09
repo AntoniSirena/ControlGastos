@@ -23,7 +23,7 @@ import { PersonaComponent } from './mantenimientos/persona/persona.component';
 import { AreaComponent } from './mantenimientos/area/area.component';
 import { PeriodosComponent } from './mantenimientos/periodos/periodos.component';
 import { TransaccionComponent } from './mantenimientos/transaccion/transaccion.component';
-import { AnularTransacionComponent } from './mantenimientos/anular-transacion/anular-transacion.component';
+import { AnularTransaccionComponent } from './mantenimientos/anular-transaccion/anular-transaccion.component';
 
 @NgModule({
   imports: [
@@ -44,7 +44,7 @@ import { AnularTransacionComponent } from './mantenimientos/anular-transacion/an
     AreaComponent,
     PeriodosComponent,
     TransaccionComponent,
-    AnularTransacionComponent
+    AnularTransaccionComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

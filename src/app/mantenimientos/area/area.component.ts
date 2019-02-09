@@ -45,6 +45,11 @@ export class AreaComponent implements OnInit {
 
   }
 
+
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
+  }
+
  //obtener Personas
  obtenerPersonas(){ 
   this.areaService.obtenerPersonaService().subscribe(resultado => {

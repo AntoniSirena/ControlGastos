@@ -109,7 +109,7 @@
         <thead>
           <tr>
             <th>Numero</th>
-            <th>Periodo con la fecha de vigencia</th>
+            <th>Período/ Fecha de vigencia/ Estado</th>
             <th>Semana</th>
             <th>Area</th>
             <th>Concepto</th>
@@ -123,7 +123,7 @@
         <tbody>
           <tr *ngFor="let gasto of gastos">
             <td>{{gasto.Id}}</td>
-            <td>{{gasto.Periodos.Descripcion +' '+ "(desde" +' '+ gasto.Periodos.FechaApertura +' '+ "hasta" +' '+ gasto.Periodos.FechaCierre +')' }}</td>
+            <td>{{gasto.Periodos.Descripcion +' '+ "(desde" +' '+ gasto.Periodos.FechaApertura +' '+ "hasta" +' '+ gasto.Periodos.FechaCierre +')'+' '+ gasto.Periodos.Statuses.Descripcion}}</td>
             <td>{{gasto.Semanas.Descripcion}}</td>
             <td>{{gasto.Areas.Descripcion}}</td>
             <td>{{gasto.TiposConceptos.Descripcion}}</td>

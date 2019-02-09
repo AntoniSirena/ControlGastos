@@ -7,6 +7,7 @@ import { PersonaComponent } from './mantenimientos/persona/persona.component';
 import { AreaComponent } from './mantenimientos/area/area.component';
 import { PeriodosComponent } from './mantenimientos/periodos/periodos.component';
 import { TransaccionComponent } from './mantenimientos/transaccion/transaccion.component';
+import { AnularTransaccionComponent } from './mantenimientos/anular-transaccion/anular-transaccion.component';
 
 
 
@@ -174,6 +175,14 @@ const routes: Routes = [
         component: TransaccionComponent,
         data: {
           title: 'Registro de Transacciónes',
+        }
+      },
+
+      {
+        path: 'anular-transaccion',
+        component: AnularTransaccionComponent,
+        data: {
+          title: 'Proceso para anular una transacción',
         }
       }
 
