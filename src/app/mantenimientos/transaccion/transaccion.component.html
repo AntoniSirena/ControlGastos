@@ -1,0 +1,49 @@
+
+<mk-tabs header="Seleccione el tipo de transaccion que desea registrar">
+
+    <mk-tab header="Gastos">
+                  
+        <br>
+        <br>
+        <br>
+        <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
+        [dtTrigger]="dtTrigger" id="datatable">
+        <thead>
+          <tr>
+            <th>Numero</th>
+            <th>Concepto</th>
+            <th>Periodo</th>
+            <th>Semana</th>
+            <th>Area que pertenece</th>
+            <th>Monto</th>
+            <th>Fecha de creacion</th>
+            <th>Fecha de registro</th>
+            <th>Nota</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let gasto of gastos">
+            <td>{{gasto.Id}}</td>
+            <td>{{gasto.TiposConceptos.Descripcion}}</td>
+            <td>{{gasto.Periodos.Descripcion +' '+ "(desde" +' '+ gasto.Periodos.FechaApertura +' '+ "hasta" +' '+ gasto.Periodos.FechaCierre +')' }}</td>
+            <td>{{gasto.Semanas.Descripcion}}</td>
+            <td>{{gasto.Areas.Descripcion}}</td>
+            <td>{{gasto.Monto | number}}</td>
+            <td>{{gasto.FechaCreacion}}</td>
+            <td>{{gasto.FechaRegistro}}</td>
+            <td>{{gasto.Coomentario}}</td>
+          </tr>
+        </tbody>
+        </table>
+     
+    </mk-tab>
+
+
+    <mk-tab header="Ingresos">
+
+        <h2> Ingresos </h2>
+  
+      </mk-tab>
+  
+
+  </mk-tabs>

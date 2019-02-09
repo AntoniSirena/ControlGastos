@@ -6,6 +6,7 @@ import { TiposConceptosComponent } from './mantenimientos/tipos-conceptos/tipos-
 import { PersonaComponent } from './mantenimientos/persona/persona.component';
 import { AreaComponent } from './mantenimientos/area/area.component';
 import { PeriodosComponent } from './mantenimientos/periodos/periodos.component';
+import { TransaccionComponent } from './mantenimientos/transaccion/transaccion.component';
 
 
 
@@ -158,9 +159,18 @@ const routes: Routes = [
       }
 
     ]
-  }, 
+  },
+  
+  {
+    path: 'transaccion',
+    component: TransaccionComponent,
+    data: {
+      title: 'Transaccion',
+    }
+  },
   
   
+
   {
     path: 'login',
     loadChildren: './+login/login.module#LoginModule',

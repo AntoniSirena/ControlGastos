@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { PersonaComponent } from './mantenimientos/persona/persona.component';
 import { AreaComponent } from './mantenimientos/area/area.component';
 import { PeriodosComponent } from './mantenimientos/periodos/periodos.component';
+import { TransaccionComponent } from './mantenimientos/transaccion/transaccion.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { PeriodosComponent } from './mantenimientos/periodos/periodos.component'
     TiposConceptosComponent,
     PersonaComponent,
     AreaComponent,
-    PeriodosComponent
+    PeriodosComponent,
+    TransaccionComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
