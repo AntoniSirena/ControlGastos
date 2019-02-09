@@ -37,9 +37,12 @@ export const adminLteConf = {
         {label: 'Periodos', route: 'mantenimientos/periodo'}      
     ]},
 
-    {label: 'Transaccion', route: 'transaccion'},
+    {label: 'Transacción', iconClasses: 'fa fa-files-o', 
+    children: [
+        {label: 'Registrar transacción', route: 'mantenimientos/transaccion'}     
+    ]}
 
-  
+    
   
   ]
 };

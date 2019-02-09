@@ -160,14 +160,26 @@ const routes: Routes = [
 
     ]
   },
-  
+
+
+
   {
-    path: 'transaccion',
-    component: TransaccionComponent,
+    path: 'mantenimientos',
     data: {
-      title: 'Transaccion',
-    }
+      title: 'Transacción',
+    },
+    children: [
+      {
+        path: 'transaccion',
+        component: TransaccionComponent,
+        data: {
+          title: 'Registro de Transacciónes',
+        }
+      }
+
+    ]
   },
+  
   
   
 

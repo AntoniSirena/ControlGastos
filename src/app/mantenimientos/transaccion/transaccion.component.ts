@@ -22,11 +22,17 @@ export class TransaccionComponent implements OnInit {
   areas: any[] = [];
   gastos : any[] = [];
 
-  gasto: any = {Id: '', ConceptoId: '', SemanaId: '', AreaId: '', Monto: '', FechaCreacion: '', Comentario: '' };
+  gasto: any = {Id: '', ConceptoId: '', SemanaId: '', AreaId: '', Monto: '', FechaCreacion: '', Comentario: '', Referencia: '' };
 
 
+
+   //Primer metodo que se ejecuta al momento de cargar el sistema
   ngOnInit() {
   
+   this.obtenerTiposConceptos();
+   this.obtenerSemans();
+   this.obtenerAreas();
+
     //Bloque para renderisar el DataTable en el html
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -40,6 +46,7 @@ export class TransaccionComponent implements OnInit {
     });
 
   }
+
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
@@ -55,18 +62,46 @@ export class TransaccionComponent implements OnInit {
         });   
     }
 
+    //TiposConceptos
+    obtenerTiposConceptos(){ 
+      this.transaccionService.obtenerTiposConceptoService().subscribe(resultado => {
+            this.tiposConceptos = resultado;
+          },       
+          error => { console.log(JSON.stringify(error));
+          });   
+      }
+
+      //Semanas
+      obtenerSemans(){ 
+        this.transaccionService.obtenerSemanaService().subscribe(resultado => {
+              this.semanas = resultado;
+            },       
+            error => { console.log(JSON.stringify(error));
+            });   
+        }
+
+        //Areas
+        obtenerAreas(){ 
+          this.transaccionService.obtenerAreaService().subscribe(resultado => {
+                this.areas = resultado;
+              },       
+              error => { console.log(JSON.stringify(error));
+              });   
+          }
+
 
      //Metodo para limpiar las variables
-  reset()
-  {
-    this.gasto.Id = '';
-    this.gasto.ConceptoId = '';
-    this.gasto.SemanaId = '';
-    this.gasto.AreaId = '';
-    this.gasto.Monto = '';
-    this.gasto.FechaCreacion = '';
-    this.gasto.Comentario = '';
-  }
+      reset()
+      {
+        this.gasto.Id = '';
+        this.gasto.ConceptoId = '';
+        this.gasto.SemanaId = '';
+        this.gasto.AreaId = '';
+        this.gasto.Monto = '';
+        this.gasto.FechaCreacion = '';
+        this.gasto.Comentario = '';
+        this.gasto.Referencia = '';
+      }
 
 
 }
