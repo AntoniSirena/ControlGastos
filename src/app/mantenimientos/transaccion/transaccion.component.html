@@ -20,7 +20,7 @@
 
                               <div class="col-xs-4 col-sm-4 col-md-3">
                                   <div class="form-group">
-                                      <label for="controlSemana">Semana que pertenece la transaccion</label>
+                                      <label for="controlSemana">Semana que pertenece la transacción</label>
                                       <select class="form-control" id="semana" [(ngModel)]="gasto.SemanaId" >
                                           <option *ngFor="let item of semanas" [value]="item.Id">{{item.Descripcion}}</option>
                                       </select>
@@ -29,7 +29,7 @@
               
                               <div class="col-xs-4 col-sm-4 col-md-3">
                                   <div class="form-group">
-                                      <label for="controlArea">Area que pertenece la transaccion</label>
+                                      <label for="controlArea">Area que pertenece la transacción</label>
                                       <select class="form-control" id="area" [(ngModel)]="gasto.AreaId" >
                                           <option *ngFor="let item of areas" [value]="item.Id">{{item.Descripcion}}</option>
                                       </select>
@@ -55,7 +55,7 @@
 
                     <div class="col-xs-4 col-sm-4 col-md-3">
                         <div class="form-group">
-                            <label for="controlFechaCreacion">Fecha que fue creada la transaccion</label>
+                            <label for="controlFechaCreacion">Fecha que fue creada la transacción</label>
                             <input type="date" 
                             [(ngModel)]="gasto.FechaCreacion" 
                             class="form-control" 
@@ -115,7 +115,7 @@
             <th>Concepto</th>
             <th>Monto</th>
             <th>Referencia</th>
-            <th>Fecha de creacion</th>
+            <th>Fecha de creación</th>
             <th>Fecha de registro</th>
             <th>Nota</th>
           </tr>
