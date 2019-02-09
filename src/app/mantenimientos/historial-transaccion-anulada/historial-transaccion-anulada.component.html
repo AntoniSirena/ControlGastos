@@ -22,12 +22,12 @@
  </thead>
  <tbody>
    <tr *ngFor="let trans of transaccionesAnuladas">
-     <td>{{trans.Id}}</td>
-     <td>{{trans.Periodos.Descripcion +' '+ "(desde" +' '+ trans.Periodos.FechaApertura +' '+ "hasta" +' '+ trans.Periodos.FechaCierre +')'+' '+ trans.Periodos.Statuses.Descripcion}}</td>
+     <td style="font-weight: bold">{{trans.Id}}</td>
+     <td style="font-weight: bold">{{trans.Periodos.Descripcion +' '+ "(desde" +' '+ trans.Periodos.FechaApertura +' '+ "hasta" +' '+ trans.Periodos.FechaCierre +')'+' '+ trans.Periodos.Statuses.Descripcion}}</td>
      <td>{{trans.Semanas.Descripcion}}</td>
      <td>{{trans.Areas.Descripcion}}</td>
      <td>{{trans.TiposConceptos.Descripcion}}</td>
-     <td>{{trans.Monto | number}}</td>
+     <td style="font-weight: bold">{{trans.Monto | number}}</td>
      <td>{{trans.Referencia}}</td>
      <td>{{trans.FechaCreacion}}</td>
      <td>{{trans.FechaRegistro}}</td>
