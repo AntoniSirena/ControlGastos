@@ -1,0 +1,38 @@
+
+
+
+ <br>
+ <br>
+ <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
+ [dtTrigger]="dtTrigger" id="datatable">
+ <thead>
+   <tr>
+     <th>Número</th>
+     <th>Período/ Fecha de vigencia/ Estado</th>
+     <th>Semana</th>
+     <th>Area</th>
+     <th>Concepto</th>
+     <th>Monto</th>
+     <th>Referencia</th>
+     <th>Fecha de creacion</th>
+     <th>Fecha de registro</th>
+     <th>Fecha de anulación</th>
+     <th>Nota</th>
+   </tr>
+ </thead>
+ <tbody>
+   <tr *ngFor="let trans of transaccionesAnuladas">
+     <td>{{trans.Id}}</td>
+     <td>{{trans.Periodos.Descripcion +' '+ "(desde" +' '+ trans.Periodos.FechaApertura +' '+ "hasta" +' '+ trans.Periodos.FechaCierre +')'+' '+ trans.Periodos.Statuses.Descripcion}}</td>
+     <td>{{trans.Semanas.Descripcion}}</td>
+     <td>{{trans.Areas.Descripcion}}</td>
+     <td>{{trans.TiposConceptos.Descripcion}}</td>
+     <td>{{trans.Monto | number}}</td>
+     <td>{{trans.Referencia}}</td>
+     <td>{{trans.FechaCreacion}}</td>
+     <td>{{trans.FechaRegistro}}</td>
+     <td>{{trans.FechaAnulacion}}</td>
+     <td>{{trans.Comentario}}</td>
+   </tr>
+ </tbody>
+ </table>

@@ -26,8 +26,6 @@ export class PeriodosComponent implements OnInit {
     
   ngOnInit() {
 
-   // this.obtenerPeriodo();
-
     //Bloque para renderisar el DataTable en el html
     this.dtOptions = {
       pagingType: 'full_numbers',

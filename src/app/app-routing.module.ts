@@ -8,6 +8,7 @@ import { AreaComponent } from './mantenimientos/area/area.component';
 import { PeriodosComponent } from './mantenimientos/periodos/periodos.component';
 import { TransaccionComponent } from './mantenimientos/transaccion/transaccion.component';
 import { AnularTransaccionComponent } from './mantenimientos/anular-transaccion/anular-transaccion.component';
+import { HistorialTransaccionAnuladaComponent } from './mantenimientos/historial-transaccion-anulada/historial-transaccion-anulada.component';
 
 
 
@@ -183,6 +184,15 @@ const routes: Routes = [
         component: AnularTransaccionComponent,
         data: {
           title: 'Proceso para anular una transacción',
+        }
+      },
+
+
+      {
+        path: 'historial-transaccion-anulada',
+        component: HistorialTransaccionAnuladaComponent,
+        data: {
+          title: 'Historico de las transacciones que han sido anuladas',
         }
       }
 

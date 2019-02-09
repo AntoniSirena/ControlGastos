@@ -10,7 +10,7 @@
                             <input type="text" 
                             [(ngModel)]="tipoConcepto.Codigo"  
                             class="form-control" 
-                            name="codigo" >
+                            name="codigo" id="codigo" >
                         </div>
                    </div>
     
@@ -21,15 +21,15 @@
                             [(ngModel)]="tipoConcepto.Descripcion" 
                             class="form-control" 
                             name="descripcion"
-                            required >
+                            id="descripcion" >
                         </div>
                     </div>
 
                     <div class="col-xs-4 col-sm-4 col-md-3">
                             <div class="form-group">
                                 <label for="controlTiposGastos">Tipos de Gastos</label>
-                                <select class="form-control" id="tiposGastos" [(ngModel)]="tipoConcepto.TipoGastoId"  required>
-                                    <option *ngFor="let item of tiposGastos" [value]="item.Id">{{item.Descripcion}}</option>
+                                <select class="form-control" id="tiposGastos" [(ngModel)]="tipoConcepto.TipoGastoId"  id="tiposGastos">
+                                    <option *ngFor="let item of tiposGastos | filterBy: filter" [value]="item.Id">{{item.Descripcion}}</option>
                                 </select>
                             </div>
                         </div>

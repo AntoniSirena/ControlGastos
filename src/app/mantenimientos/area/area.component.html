@@ -10,7 +10,7 @@
                               <input type="text" 
                               [(ngModel)]="area.Codigo"  
                               class="form-control" 
-                              name="codigo" >
+                              name="codigo" id="codigo">
                           </div>
                      </div>
       
@@ -21,14 +21,14 @@
                               [(ngModel)]="area.Descripcion" 
                               class="form-control" 
                               name="descripcion"
-                              required >
+                              id="descripcion" >
                           </div>
                       </div>
   
                       <div class="col-xs-4 col-sm-4 col-md-3">
                               <div class="form-group">
                                   <label for="controlPersona">Persona encargada</label>
-                                  <select class="form-control" id="persona" [(ngModel)]="area.PersonaId"  required>
+                                  <select class="form-control" id="persona" [(ngModel)]="area.PersonaId" >
                                       <option *ngFor="let item of personas | filterBy: filter" [value]="item.Id">{{item.NombreCompleto}}</option>
                                   </select>
                               </div>
