@@ -1,7 +1,11 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+
 import { TransaccionService } from 'src/app/servicios/transaccion/transaccion.service';
+
+
 
 @Component({
   selector: 'app-transaccion',
@@ -20,7 +24,7 @@ export class TransaccionComponent implements OnInit {
   tiposConceptos: any[] = [];
   semanas: any[] = [];
   areas: any[] = [];
-  gastos : any[] = [];
+  transacciones : any[] = [];
 
   gasto: any = {
   Id: '', 
@@ -30,8 +34,19 @@ export class TransaccionComponent implements OnInit {
   FechaCreacion: '', 
   Comentario: '', 
   Referencia: '', 
-  Origen: '' 
+  Origen: 'Gasto' 
   };
+
+  ingreso: any = {
+    Id: '', 
+    ConceptoId: '', 
+    SemanaId: '', AreaId: '',
+    Monto: '', 
+    FechaCreacion: '', 
+    Comentario: '', 
+    Referencia: '', 
+    Origen: 'Ingreso' 
+    };
 
 
 
@@ -49,27 +64,42 @@ export class TransaccionComponent implements OnInit {
       processing: true
     };
 
+    
+
     this.transaccionService.obtenerGastoService().subscribe(data => {
-      this.gastos = data;
+
+      this.transacciones = data;
+
       this.dtTrigger.next();
     });
 
   }
 
-
+ d: any[];
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
   
 
- //Agregar
-    agregarTipoConcepto(){ 
+ //Agregar Transaccion tipo Gasto
+    agregarTransaccionGasto(){ 
     this.transaccionService.agregarTransaccionGastoService(this.gasto).subscribe(resultado => {
         this.reset();
         },       
         error => { console.log(JSON.stringify(error));
         });   
     }
+
+
+    //Agregar Transaccion tipo Ingreso
+    agregarTransaccionIngreso(){ 
+      this.transaccionService.agregarTransaccionGastoService(this.ingreso).subscribe(resultado => {
+          this.reset();
+          },       
+          error => { console.log(JSON.stringify(error));
+          });   
+      }
+
 
     //TiposConceptos
     obtenerTiposConceptos(){ 

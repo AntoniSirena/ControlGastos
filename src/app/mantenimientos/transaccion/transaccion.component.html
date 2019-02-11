@@ -1,6 +1,7 @@
 
 <mk-tabs header="Seleccione el tipo de transacción que desea registrar" tabsColor = "red" >
 
+    <!-- Formulario para registras los gastos -->
     <mk-tab header="GASTOS">
 
         <br>
@@ -55,7 +56,7 @@
 
                     <div class="col-xs-4 col-sm-4 col-md-3">
                         <div class="form-group">
-                            <label for="controlFechaCreacion">Fecha que fue creada la transacción</label>
+                            <label for="controlFechaCreacion">Fecha que fue creada</label>
                             <input type="date" 
                             [(ngModel)]="gasto.FechaCreacion" 
                             class="form-control" 
@@ -91,7 +92,7 @@
                 <div class="row">
                       <div class="col-xs-8 col-sm-4 col-md-4">
                                   <div class="col-xs-4 col-sm-2 col-md-2">
-                                    <button (click)="agregarTipoConcepto()" class="btn btn-primary" id="agregarTipoConcepto">Agregar</button>
+                                    <button (click)="agregarTransaccionGasto()" class="btn btn-primary" id="agregarTransaccionGasto">Agregar</button>
                                   </div>
                           </div>
                 </div>
@@ -109,6 +110,7 @@
         <thead>
           <tr>
             <th>Número</th>
+            <th>Origen</th>
             <th>Período/ Fecha de vigencia/ Estado</th>
             <th>Semana</th>
             <th>Area</th>
@@ -121,8 +123,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let gasto of gastos">
+          <tr *ngFor="let gasto of transacciones">
             <td style="font-weight: bold">{{gasto.Id}}</td>
+            <td style="font-weight: bold">{{gasto.Origen}}</td>
             <td style="font-weight: bold">{{gasto.Periodos.Descripcion +' '+ "(desde" +' '+ gasto.Periodos.FechaApertura +' '+ "hasta" +' '+ gasto.Periodos.FechaCierre +')'+' '+ gasto.Periodos.Statuses.Descripcion}}</td>
             <td>{{gasto.Semanas.Descripcion}}</td>
             <td>{{gasto.Areas.Descripcion}}</td>
@@ -140,10 +143,145 @@
 
 
 
+    <!-- Formulario para registras los ingresoos -->
     <mk-tab header="INGRESOS">
 
-        <h2> Esta sección esta en Proceso </h2>
-  
+            <br>
+            <br>
+            <div id="formulario" class="container-fluid">
+                <div class="row">
+                      <div class="col-xs-10 col-sm-10 col-md-10">
+    
+                                  <div class="col-xs-4 col-sm-4 col-md-3">
+                                      <div class="form-group">
+                                          <label for="controlTiposConceptos">Concepto</label>
+                                          <select class="form-control" id="TiposConcepto" [(ngModel)]="ingreso.ConceptoId">
+                                              <option *ngFor="let item of tiposConceptos" [value]="item.Id">{{item.Descripcion}}</option>
+                                          </select>
+                                      </div>
+                                  </div>
+    
+                                  <div class="col-xs-4 col-sm-4 col-md-3">
+                                      <div class="form-group">
+                                          <label for="controlSemana">Semana que pertenece la transacción</label>
+                                          <select class="form-control" id="semana" [(ngModel)]="ingreso.SemanaId" >
+                                              <option *ngFor="let item of semanas" [value]="item.Id">{{item.Descripcion}}</option>
+                                          </select>
+                                      </div>
+                                  </div>
+                  
+                                  <div class="col-xs-4 col-sm-4 col-md-3">
+                                      <div class="form-group">
+                                          <label for="controlArea">Area que pertenece la transacción</label>
+                                          <select class="form-control" id="area" [(ngModel)]="ingreso.AreaId" >
+                                              <option *ngFor="let item of areas" [value]="item.Id">{{item.Descripcion}}</option>
+                                          </select>
+                                      </div>
+                                  </div>
+    
+                                  <div class="col-xs-2 col-sm-2 col-md-2">
+                                      <div class="form-group">
+                                          <label for="controlMonto">Monto</label>
+                                          <input type="text" 
+                                          [(ngModel)]="ingreso.Monto" 
+                                          class="form-control" 
+                                          name="monto" id="monto">
+                                      </div>
+                                  </div>
+              
+                            
+                          </div>
+                 </div>
+    
+                 <div class="row">
+                    <div class="col-xs-10 col-sm-10 col-md-8"> 
+    
+                        <div class="col-xs-4 col-sm-4 col-md-3">
+                            <div class="form-group">
+                                <label for="controlFechaCreacion">Fecha que fue creada</label>
+                                <input type="date" 
+                                [(ngModel)]="ingreso.FechaCreacion" 
+                                class="form-control" 
+                                name="fechaCreacion" id="fechaCreacion" >
+                            </div>
+                        </div>
+    
+                        <div class="col-xs-2 col-sm-2 col-md-2">
+                            <div class="form-group">
+                                <label for="controlReferencia">Referencia</label>
+                                <input type="text" 
+                                [(ngModel)]="ingreso.Referencia" 
+                                class="form-control" 
+                                name="referencia" id="referencia">
+                            </div>
+                        </div>
+    
+                        <div class="col-xs-4 col-sm-4 col-md-5">
+                            <div class="form-group">
+                                <label for="controlComentario">Nota</label>
+                                <input type="text" 
+                                [(ngModel)]="ingreso.Comentario" 
+                                class="form-control" 
+                                name="comentario" id="comentario" >
+                            </div>
+                        </div>
+            
+                          
+                    </div>
+               </div>
+              
+                    
+                    <div class="row">
+                          <div class="col-xs-8 col-sm-4 col-md-4">
+                                      <div class="col-xs-4 col-sm-2 col-md-2">
+                                        <button (click)="agregarTransaccionIngreso()" class="btn btn-primary" id="agregarTransaccionIngreso">Agregar</button>
+                                      </div>
+                              </div>
+                    </div>
+              
+              
+              </div>
+    
+    
+                      
+            <br>
+            <br>
+            <br>
+            <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
+            [dtTrigger]="dtTrigger" id="datatable">
+            <thead>
+              <tr>
+                <th>Número</th>
+                <th>Origen</th>
+                <th>Período/ Fecha de vigencia/ Estado</th>
+                <th>Semana</th>
+                <th>Area</th>
+                <th>Concepto</th>
+                <th>Monto</th>
+                <th>Referencia</th>
+                <th>Fecha de creación</th>
+                <th>Fecha de registro</th>
+                <th>Nota</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let gasto of transacciones">
+                <td style="font-weight: bold">{{gasto.Id}}</td>
+                <td style="font-weight: bold">{{gasto.Origen}}</td>
+                <td style="font-weight: bold">{{gasto.Periodos.Descripcion +' '+ "(desde" +' '+ gasto.Periodos.FechaApertura +' '+ "hasta" +' '+ gasto.Periodos.FechaCierre +')'+' '+ gasto.Periodos.Statuses.Descripcion}}</td>
+                <td>{{gasto.Semanas.Descripcion}}</td>
+                <td>{{gasto.Areas.Descripcion}}</td>
+                <td>{{gasto.TiposConceptos.Descripcion}}</td>
+                <td style="font-weight: bold">{{gasto.Monto | number}}</td>
+                <td>{{gasto.Referencia}}</td>
+                <td>{{gasto.FechaCreacion}}</td>
+                <td>{{gasto.FechaRegistro}}</td>
+                <td>{{gasto.Comentario}}</td>
+              </tr>
+            </tbody>
+            </table>
+
+        
       </mk-tab>
   
 

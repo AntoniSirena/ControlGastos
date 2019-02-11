@@ -38,6 +38,7 @@
    <tr>
      <th>Anular</th>
      <th>Número</th>
+     <th>Origen</th>
      <th>Período/ Fecha de vigencia/ Estado</th>
      <th>Semana</th>
      <th>Area</th>
@@ -53,6 +54,7 @@
    <tr *ngFor="let trans of transaccion">
      <th><button (click)="anularTransaccion()" class="btn btn-danger"  id="anularTransaccion">Anular</button></th>
      <td style="font-weight: bold">{{trans.Id}}</td>
+     <td style="font-weight: bold">{{trans.Origen}}</td>
      <td style="font-weight: bold">{{trans.Periodos.Descripcion +' '+ "(desde" +' '+ trans.Periodos.FechaApertura +' '+ "hasta" +' '+ trans.Periodos.FechaCierre +')'+' '+ trans.Periodos.Statuses.Descripcion}}</td>
      <td>{{trans.Semanas.Descripcion}}</td>
      <td>{{trans.Areas.Descripcion}}</td>
