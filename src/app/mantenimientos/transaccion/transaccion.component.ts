@@ -22,7 +22,16 @@ export class TransaccionComponent implements OnInit {
   areas: any[] = [];
   gastos : any[] = [];
 
-  gasto: any = {Id: '', ConceptoId: '', SemanaId: '', AreaId: '', Monto: '', FechaCreacion: '', Comentario: '', Referencia: '' };
+  gasto: any = {
+  Id: '', 
+  ConceptoId: '', 
+  SemanaId: '', AreaId: '',
+  Monto: '', 
+  FechaCreacion: '', 
+  Comentario: '', 
+  Referencia: '', 
+  Origen: '' 
+  };
 
 
 

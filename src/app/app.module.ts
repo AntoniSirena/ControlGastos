@@ -19,6 +19,8 @@ import { DataTablesModule } from 'angular-datatables';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { PersonaComponent } from './mantenimientos/persona/persona.component';
 import { AreaComponent } from './mantenimientos/area/area.component';
 import { PeriodosComponent } from './mantenimientos/periodos/periodos.component';
@@ -35,6 +37,7 @@ import { HistorialTransaccionAnuladaComponent } from './mantenimientos/historial
     LoadingPageModule, MaterialBarModule,
     DataTablesModule,
     FormsModule,
+    ReactiveFormsModule,
     FilterPipeModule
   ],
   declarations: [

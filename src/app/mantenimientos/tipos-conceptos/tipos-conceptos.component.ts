@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { TiposConceptosService } from 'src/app/servicios/tiposConceptos/tipos-conceptos.service';
@@ -13,7 +14,10 @@ declare var $;
 })
 export class TiposConceptosComponent implements OnInit, OnDestroy  {
 
-  constructor(private tiposConceptosService: TiposConceptosService, private http: HttpClient) {   }
+
+  //Contructor
+  constructor(private tiposConceptosService: TiposConceptosService, 
+    private http: HttpClient) {  }
 
 
   //Variable globales
@@ -23,8 +27,6 @@ export class TiposConceptosComponent implements OnInit, OnDestroy  {
   tiposConceptos: any[] = [];
   tiposGastos : any[] = [];
   tipoConcepto: any = {Codigo:'' ,Descripcion:'', Id:'', TipoGastoId: ''};
-
-
 
 
  //Primer metodo que se ejecuta al momento de cargar el sistema
@@ -54,9 +56,8 @@ export class TiposConceptosComponent implements OnInit, OnDestroy  {
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
+
   
-
-
   //obtener Tipos de Gastos
   obtenerTiposGastos(){ 
     this.tiposConceptosService.obtenerTiposGastosService().subscribe(resultado => {
@@ -66,14 +67,14 @@ export class TiposConceptosComponent implements OnInit, OnDestroy  {
         });   
     }
 
-  
+
  //Agregar
-    agregarTipoConcepto(){ 
-    this.tiposConceptosService.agregarTipoConceptoService(this.tipoConcepto).subscribe(resultado => {
+    agregarTipoConcepto(){
+      this.tiposConceptosService.agregarTipoConceptoService(this.tipoConcepto).subscribe(resultado => {
         this.reset();
         },       
         error => { console.log(JSON.stringify(error));
-        });   
+        });
     }
     
   //Actualizar
