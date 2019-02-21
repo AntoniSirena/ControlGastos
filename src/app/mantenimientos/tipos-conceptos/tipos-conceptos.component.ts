@@ -26,7 +26,7 @@ export class TiposConceptosComponent implements OnInit, OnDestroy  {
 
   tiposConceptos: any[] = [];
   tiposGastos : any[] = [];
-  tipoConcepto: any = {Codigo:'' ,Descripcion:'', Id:'', TipoGastoId: ''};
+  tipoConcepto: any = {Id:'',Codigo:'' ,Descripcion:'', TipoGastoId:''};
 
 
  //Primer metodo que se ejecuta al momento de cargar el sistema

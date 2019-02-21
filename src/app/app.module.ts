@@ -27,6 +27,9 @@ import { PeriodosComponent } from './mantenimientos/periodos/periodos.component'
 import { TransaccionComponent } from './mantenimientos/transaccion/transaccion.component';
 import { AnularTransaccionComponent } from './mantenimientos/anular-transaccion/anular-transaccion.component';
 import { HistorialTransaccionAnuladaComponent } from './mantenimientos/historial-transaccion-anulada/historial-transaccion-anulada.component';
+import { FilterElementsPipe } from './pipes/filter-elements.pipe';
+import { GroupByPipe } from './pipes/group-by.pipe';
+import { ResumenTransaccionComponent } from './estadisticas/resumen-transaccion/resumen-transaccion.component';
 
 @NgModule({
   imports: [
@@ -49,7 +52,10 @@ import { HistorialTransaccionAnuladaComponent } from './mantenimientos/historial
     PeriodosComponent,
     TransaccionComponent,
     AnularTransaccionComponent,
-    HistorialTransaccionAnuladaComponent
+    HistorialTransaccionAnuladaComponent,
+    FilterElementsPipe,
+    GroupByPipe,
+    ResumenTransaccionComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

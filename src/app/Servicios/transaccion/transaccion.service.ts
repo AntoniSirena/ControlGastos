@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable} from 'rxjs';
+import { Url } from 'src/app/global/constante/url';
 
 
 
@@ -9,32 +10,34 @@ import { Observable} from 'rxjs';
 })
 export class TransaccionService {
 
+  private url = new Url();
+
   constructor(private httpClient: HttpClient ) { }
 
 
   obtenerGastoService():Observable<any> {
-    return this.httpClient.get("http://localhost:61575/Api/Transaccion/GetAll");   
+    return this.httpClient.get(`${this.url.url}Api/Transaccion/GetAll`);   
   }
 
 
   obtenerTiposConceptoService():Observable<any> {
-    return this.httpClient.get("http://localhost:61575/Api/Transaccion/GetTioposConceptos");   
+    return this.httpClient.get(`${this.url.url}Api/Transaccion/GetTioposConceptos`);   
   }
 
   obtenerSemanaService():Observable<any> {
-    return this.httpClient.get("http://localhost:61575/Api/Transaccion/GetSemanas");   
+    return this.httpClient.get(`${this.url.url}Api/Transaccion/GetSemanas`);   
   }
 
 
   obtenerAreaService():Observable<any> {
-    return this.httpClient.get("http://localhost:61575/Api/Transaccion/GetAreas");   
+    return this.httpClient.get(`${this.url.url}Api/Transaccion/GetAreas`);   
   }
 
 
   agregarTransaccionGastoService(gasto: any){
     let Json = JSON.stringify(gasto);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.httpClient.post("http://localhost:61575/Api/Transaccion/Create", Json, {headers: headers} );
+    return this.httpClient.post(`${this.url.url}Api/Transaccion/Create`, Json, {headers: headers} );
   }
 
 

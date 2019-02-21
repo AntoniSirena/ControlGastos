@@ -29,6 +29,8 @@ export const adminLteConf = {
       //]},
     //{label: 'Dropdown', route: 'dropdown', iconClasses: 'fa fa-arrows-v'},
     //{label: 'Tabs', route: 'tabs', iconClasses: 'fa fa-th'},
+
+    //Mantenimientos
     {label: 'Mantenimientos', iconClasses: 'fa fa-files-o', 
     children: [
         {label: 'Tipos de conceptos', route: 'mantenimientos/tipos-conceptos'},
@@ -37,11 +39,18 @@ export const adminLteConf = {
         {label: 'Periodos', route: 'mantenimientos/periodo'}      
     ]},
 
+    //Transaccion
     {label: 'Transacción', iconClasses: 'fa fa-files-o', 
     children: [
         {label: 'Registrar transacción', route: 'mantenimientos/transaccion'},
         {label: 'Anular transacción', route: 'mantenimientos/anular-transaccion'},
         {label: 'Ver transacciones anuladas', route: 'mantenimientos/historial-transaccion-anulada'}   
+    ]},
+
+    //Estadisticas
+    {label: 'Estadísticas', iconClasses: 'fa fa-files-o', 
+    children: [
+        {label: 'Resumen de Ingresos/Gastos', route: 'estadisticas/resumen-transaccion'}  
     ]}
 
     

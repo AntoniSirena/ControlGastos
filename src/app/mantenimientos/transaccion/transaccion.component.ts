@@ -24,7 +24,12 @@ export class TransaccionComponent implements OnInit {
   tiposConceptos: any[] = [];
   semanas: any[] = [];
   areas: any[] = [];
+
   transacciones : any[] = [];
+  gastos : any[] = [];
+  ingresos : any[] = [];
+
+
 
   gasto: any = {
   Id: '', 
@@ -49,6 +54,20 @@ export class TransaccionComponent implements OnInit {
     };
 
 
+  //Metodo para segmentar las transacciones por gastos e ingresos
+   asignarTransacciones(){
+   this.transacciones.forEach(element => {
+     if(element.Origen == "Gasto"){
+     this.gastos.push(element);
+     }
+
+     if(element.Origen == "Ingreso"){
+      this.ingresos.push(element);
+      } 
+   }); 
+
+   }
+
 
    //Primer metodo que se ejecuta al momento de cargar el sistema
   ngOnInit() {
@@ -64,18 +83,15 @@ export class TransaccionComponent implements OnInit {
       processing: true
     };
 
-    
-
-    this.transaccionService.obtenerGastoService().subscribe(data => {
-
+    this.transaccionService.obtenerGastoService().subscribe(data  => {
       this.transacciones = data;
-
+      this.asignarTransacciones();
       this.dtTrigger.next();
     });
 
   }
 
- d: any[];
+
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }

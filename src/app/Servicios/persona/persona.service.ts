@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable} from 'rxjs';
+import { Url } from "src/app/global/constante/url";
 
 
 @Injectable({
@@ -8,33 +9,35 @@ import { Observable} from 'rxjs';
 })
 export class PersonaService {
 
+  private url = new Url();
+
   constructor(private httpClient: HttpClient) { 
 
   }
 
 
   obtenerPersonasService():Observable<any> {
-    return this.httpClient.get("http://localhost:61575/Api/Persona/GetAll");   
+    return this.httpClient.get(`${this.url.url}Api/Persona/GetAll`);   
   }
 
   obtenerPersonaByIdService(identificador):Observable<any> {
-    return this.httpClient.get("http://localhost:61575/Api/Persona/GetById/" + identificador);   
+    return this.httpClient.get(`${this.url.url}Api/Persona/GetById/" + identificador`);   
   }
 
   agregarPersonaService(persona: any){
     let Json = JSON.stringify(persona);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.httpClient.post("http://localhost:61575/Api/Persona/Create", Json, {headers: headers} );
+    return this.httpClient.post(`${this.url.url}Api/Persona/Create`, Json, {headers: headers} );
   }
 
   actualizarPersonaService(persona: any){
     let Json = JSON.stringify(persona);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.httpClient.put("http://localhost:61575/Api/Persona/Update", Json, {headers: headers} );
+    return this.httpClient.put(`${this.url.url}Api/Persona/Update`, Json, {headers: headers} );
   }
 
   eliminarPersonaService(identificador):Observable<any> {
-    return this.httpClient.delete("http://localhost:61575/Api/Persona/Delete/" + identificador)
+    return this.httpClient.delete(`${this.url.url}Api/Persona/Delete/` + identificador)
   }
 
 

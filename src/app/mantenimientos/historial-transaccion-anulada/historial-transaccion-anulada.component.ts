@@ -18,6 +18,27 @@ export class HistorialTransaccionAnuladaComponent implements OnInit {
   dtTrigger: Subject<any> = new Subject();
 
   transaccionesAnuladas : any[] = [];
+  gastos : any[] = [];
+  ingresos : any[] = [];
+
+
+
+
+  //Metodo para segmentar las transacciones por gastos e ingresos
+  asignarTransacciones(){
+    this.transaccionesAnuladas.forEach(element => {
+      if(element.Origen == "Gasto"){
+      this.gastos.push(element);
+      }
+ 
+      if(element.Origen == "Ingreso"){
+       this.ingresos.push(element);
+       } 
+    }); 
+ 
+    }
+
+
 
   ngOnInit() {
 
@@ -30,6 +51,7 @@ export class HistorialTransaccionAnuladaComponent implements OnInit {
 
     this.historialTransaccionAnuladaService.obtenerTransaccionAnuladasService().subscribe(data => {
       this.transaccionesAnuladas = data;
+      this.asignarTransacciones();
       this.dtTrigger.next();
     });
 

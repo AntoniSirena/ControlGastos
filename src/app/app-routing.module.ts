@@ -9,6 +9,7 @@ import { PeriodosComponent } from './mantenimientos/periodos/periodos.component'
 import { TransaccionComponent } from './mantenimientos/transaccion/transaccion.component';
 import { AnularTransaccionComponent } from './mantenimientos/anular-transaccion/anular-transaccion.component';
 import { HistorialTransaccionAnuladaComponent } from './mantenimientos/historial-transaccion-anulada/historial-transaccion-anulada.component';
+import { ResumenTransaccionComponent } from './estadisticas/resumen-transaccion/resumen-transaccion.component';
 
 
 
@@ -122,6 +123,8 @@ const routes: Routes = [
   
   //Bloque para llamar los sub-menu de mantenimientos
   //Las URLs se llaman como un componente no como un modulo
+
+  //Mantenimientos
   {
     path: 'mantenimientos',
     data: {
@@ -164,7 +167,7 @@ const routes: Routes = [
   },
 
 
-
+ //Transaccion
   {
     path: 'mantenimientos',
     data: {
@@ -175,7 +178,7 @@ const routes: Routes = [
         path: 'transaccion',
         component: TransaccionComponent,
         data: {
-          title: 'Registro de Transacciónes',
+          title: '',
         }
       },
 
@@ -192,7 +195,26 @@ const routes: Routes = [
         path: 'historial-transaccion-anulada',
         component: HistorialTransaccionAnuladaComponent,
         data: {
-          title: 'Historico de las transacciones que han sido anuladas',
+          title: 'Seleccione un tipo de transacción para ver su historico',
+        }
+      }
+
+    ]
+  },
+
+
+  //Estadisticas
+  {
+    path: 'estadisticas',
+    data: {
+      title: 'Estadísticas',
+    },
+    children: [
+      {
+        path: 'resumen-transaccion',
+        component: ResumenTransaccionComponent,
+        data: {
+          title: 'Resumen de Ingresos y Gastos',
         }
       }
 

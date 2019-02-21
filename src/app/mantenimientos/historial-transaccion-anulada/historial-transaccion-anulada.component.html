@@ -1,40 +1,96 @@
 
 
+<mk-tabs header="" tabsColor = "red" >
 
- <br>
- <br>
- <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
- [dtTrigger]="dtTrigger" id="datatable">
- <thead>
-   <tr>
-     <th>Número</th>
-     <th>Origen</th>
-     <th>Período/ Fecha de vigencia/ Estado</th>
-     <th>Semana</th>
-     <th>Area</th>
-     <th>Concepto</th>
-     <th>Monto</th>
-     <th>Referencia</th>
-     <th>Fecha de creacion</th>
-     <th>Fecha de registro</th>
-     <th>Fecha de anulación</th>
-     <th>Nota</th>
-   </tr>
- </thead>
- <tbody>
-   <tr *ngFor="let trans of transaccionesAnuladas">
-     <td style="font-weight: bold">{{trans.Id}}</td>
-     <td style="font-weight: bold">{{trans.Origen}}</td>
-     <td style="font-weight: bold">{{trans.Periodos.Descripcion +' '+ "(desde" +' '+ trans.Periodos.FechaApertura +' '+ "hasta" +' '+ trans.Periodos.FechaCierre +')'+' '+ trans.Periodos.Statuses.Descripcion}}</td>
-     <td>{{trans.Semanas.Descripcion}}</td>
-     <td>{{trans.Areas.Descripcion}}</td>
-     <td>{{trans.TiposConceptos.Descripcion}}</td>
-     <td style="font-weight: bold">{{trans.Monto | number}}</td>
-     <td>{{trans.Referencia}}</td>
-     <td>{{trans.FechaCreacion}}</td>
-     <td>{{trans.FechaRegistro}}</td>
-     <td>{{trans.FechaAnulacion}}</td>
-     <td>{{trans.Comentario}}</td>
-   </tr>
- </tbody>
- </table>
+    <!-- Vista de gastos -->
+    <mk-tab header="GASTOS">
+
+        <br>
+        <br>
+        <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
+        [dtTrigger]="dtTrigger" id="datatable">
+        <thead>
+          <tr>
+            <th>Número</th>
+            <th>Origen</th>
+            <th>Período/ Fecha de vigencia/ Estado</th>
+            <th>Semana</th>
+            <th>Area</th>
+            <th>Concepto</th>
+            <th>Monto</th>
+            <th>Referencia</th>
+            <th>Fecha de creacion</th>
+            <th>Fecha de registro</th>
+            <th>Fecha de anulación</th>
+            <th>Nota</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let gasto of gastos">
+            <td style="font-weight: bold">{{gasto.Id}}</td>
+            <td style="font-weight: bold">{{gasto.Origen}}</td>
+            <td style="font-weight: bold">{{gasto.Periodos.Descripcion +' '+ "(desde" +' '+ gasto.Periodos.FechaApertura +' '+ "hasta" +' '+ gasto.Periodos.FechaCierre +')'+' '+ gasto.Periodos.Statuses.Descripcion}}</td>
+            <td>{{gasto.Semanas.Descripcion}}</td>
+            <td>{{gasto.Areas.Descripcion}}</td>
+            <td>{{gasto.TiposConceptos.Descripcion}}</td>
+            <td style="font-weight: bold">{{gasto.Monto | number}}</td>
+            <td>{{gasto.Referencia}}</td>
+            <td>{{gasto.FechaCreacion}}</td>
+            <td>{{gasto.FechaRegistro}}</td>
+            <td>{{gasto.FechaAnulacion}}</td>
+            <td>{{gasto.Comentario}}</td>
+          </tr>
+        </tbody>
+        </table>
+     
+     
+    </mk-tab>
+
+
+
+    <!-- Vista de ingresoos -->
+    <mk-tab header="INGRESOS">
+
+        <br>
+        <br>
+        <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
+        [dtTrigger]="dtTrigger" id="datatable">
+        <thead>
+          <tr>
+            <th>Número</th>
+            <th>Origen</th>
+            <th>Período/ Fecha de vigencia/ Estado</th>
+            <th>Semana</th>
+            <th>Area</th>
+            <th>Concepto</th>
+            <th>Monto</th>
+            <th>Referencia</th>
+            <th>Fecha de creacion</th>
+            <th>Fecha de registro</th>
+            <th>Fecha de anulación</th>
+            <th>Nota</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ingreso of ingresos">
+            <td style="font-weight: bold">{{ingreso.Id}}</td>
+            <td style="font-weight: bold">{{ingreso.Origen}}</td>
+            <td style="font-weight: bold">{{ingreso.Periodos.Descripcion +' '+ "(desde" +' '+ ingreso.Periodos.FechaApertura +' '+ "hasta" +' '+ ingreso.Periodos.FechaCierre +')'+' '+ ingreso.Periodos.Statuses.Descripcion}}</td>
+            <td>{{ingreso.Semanas.Descripcion}}</td>
+            <td>{{ingreso.Areas.Descripcion}}</td>
+            <td>{{ingreso.TiposConceptos.Descripcion}}</td>
+            <td style="font-weight: bold">{{ingreso.Monto | number}}</td>
+            <td>{{ingreso.Referencia}}</td>
+            <td>{{ingreso.FechaCreacion}}</td>
+            <td>{{ingreso.FechaRegistro}}</td>
+            <td>{{ingreso.FechaAnulacion}}</td>
+            <td>{{ingreso.Comentario}}</td>
+          </tr>
+        </tbody>
+        </table>
+       
+        
+      </mk-tab>
+  
+
+  </mk-tabs>

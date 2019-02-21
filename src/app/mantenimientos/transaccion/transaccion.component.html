@@ -4,6 +4,8 @@
     <!-- Formulario para registras los gastos -->
     <mk-tab header="GASTOS">
 
+        <h3 id="gastos"> Registro de Gastos </h3>
+
         <br>
         <br>
         <div id="formulario" class="container-fluid">
@@ -123,7 +125,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let gasto of transacciones">
+          <tr *ngFor="let gasto of gastos">
             <td style="font-weight: bold">{{gasto.Id}}</td>
             <td style="font-weight: bold">{{gasto.Origen}}</td>
             <td style="font-weight: bold">{{gasto.Periodos.Descripcion +' '+ "(desde" +' '+ gasto.Periodos.FechaApertura +' '+ "hasta" +' '+ gasto.Periodos.FechaCierre +')'+' '+ gasto.Periodos.Statuses.Descripcion}}</td>
@@ -145,6 +147,8 @@
 
     <!-- Formulario para registras los ingresoos -->
     <mk-tab header="INGRESOS">
+
+            <h3 id="gastos"> Registro de Ingresos </h3>
 
             <br>
             <br>
@@ -265,18 +269,18 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let gasto of transacciones">
-                <td style="font-weight: bold">{{gasto.Id}}</td>
-                <td style="font-weight: bold">{{gasto.Origen}}</td>
-                <td style="font-weight: bold">{{gasto.Periodos.Descripcion +' '+ "(desde" +' '+ gasto.Periodos.FechaApertura +' '+ "hasta" +' '+ gasto.Periodos.FechaCierre +')'+' '+ gasto.Periodos.Statuses.Descripcion}}</td>
-                <td>{{gasto.Semanas.Descripcion}}</td>
-                <td>{{gasto.Areas.Descripcion}}</td>
-                <td>{{gasto.TiposConceptos.Descripcion}}</td>
-                <td style="font-weight: bold">{{gasto.Monto | number}}</td>
-                <td>{{gasto.Referencia}}</td>
-                <td>{{gasto.FechaCreacion}}</td>
-                <td>{{gasto.FechaRegistro}}</td>
-                <td>{{gasto.Comentario}}</td>
+              <tr *ngFor="let ingreso of ingresos">
+                <td style="font-weight: bold">{{ingreso.Id}}</td>
+                <td style="font-weight: bold">{{ingreso.Origen}}</td>
+                <td style="font-weight: bold">{{ingreso.Periodos.Descripcion +' '+ "(desde" +' '+ ingreso.Periodos.FechaApertura +' '+ "hasta" +' '+ ingreso.Periodos.FechaCierre +')'+' '+ ingreso.Periodos.Statuses.Descripcion}}</td>
+                <td>{{ingreso.Semanas.Descripcion}}</td>
+                <td>{{ingreso.Areas.Descripcion}}</td>
+                <td>{{ingreso.TiposConceptos.Descripcion}}</td>
+                <td style="font-weight: bold">{{ingreso.Monto | number}}</td>
+                <td>{{ingreso.Referencia}}</td>
+                <td>{{ingreso.FechaCreacion}}</td>
+                <td>{{ingreso.FechaRegistro}}</td>
+                <td>{{ingreso.Comentario}}</td>
               </tr>
             </tbody>
             </table>

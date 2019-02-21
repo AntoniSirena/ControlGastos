@@ -4,18 +4,18 @@ import { Observable} from 'rxjs';
 import { Url } from 'src/app/global/constante/url';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
-export class HistorialTransaccionAnuladaService {
+export class ResumenTransaccionService {
 
   private url = new Url();
 
   constructor( private httpClient: HttpClient) { }
 
-
-  obtenerTransaccionAnuladasService():Observable<any> {
-    return this.httpClient.get(`${this.url.url}Api/Transaccion/HistorialTransaccionAnulada`);   
+  obtenerResumenTransaccionService():Observable<any> {
+    return this.httpClient.get(`${this.url.url}Api/Transaccion/GetResumemTransacciones`);   
   }
-
+  
 }

@@ -24,14 +24,14 @@
                                   </div>
                               </div>
 
-                              <div class="col-xs-4 col-sm-4 col-md-3">
-                                      <div class="form-group">
-                                          <label for="controlTiposGastos">Tipos de Gastos</label>
-                                          <select class="form-control" id="tiposGastos" [(ngModel)]="tipoConcepto.TipoGastoId"  id="tiposGastos">
-                                              <option *ngFor="let item of tiposGastos | filterBy: filter" [value]="item.Id">{{item.Descripcion}}</option>
-                                          </select>
-                                      </div>
-                                  </div>
+                                  <div class="col-xs-4 col-sm-4 col-md-3">
+                                    <div class="form-group">
+                                        <label for="controlTiposGastos">Tipo</label>
+                                        <select class="form-control" id="tiposGasto" [(ngModel)]="tipoConcepto.TipoGastoId" >
+                                            <option *ngFor="let item of tiposGastos | filterBy: filter" [value]="item.Id">{{item.Descripcion}}</option>
+                                        </select>
+                                    </div>
+                                </div>
                         
                       </div>
             </div>

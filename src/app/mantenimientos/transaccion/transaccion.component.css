@@ -26,3 +26,18 @@
 #comentario{
     border-radius: 10px;
 }
+
+
+#gastos{
+    text-align: center;
+    font-weight:bold;
+    text-decoration: underline;
+    color: red;
+}
+
+#igresos{
+    text-align: center;
+    font-weight:bold;
+    text-decoration: underline;
+    color: red;
+}
