@@ -27,8 +27,8 @@
                                   <div class="col-xs-4 col-sm-4 col-md-3">
                                     <div class="form-group">
                                         <label for="controlTiposGastos">Tipo</label>
-                                        <select class="form-control" id="tiposGasto" [(ngModel)]="tipoConcepto.TipoGastoId" >
-                                            <option *ngFor="let item of tiposGastos | filterBy: filter" [value]="item.Id">{{item.Descripcion}}</option>
+                                        <select class="form-control" id="tiposGasto" [(ngModel)] = "tipoConcepto.tipoGastoId">
+                                            <option *ngFor="let item of tiposGastos " [value]="item.Id">{{item.Descripcion}}</option>
                                         </select>
                                     </div>
                                 </div>
