@@ -119,7 +119,7 @@ export class TransaccionComponent implements OnInit {
  //Agregar Transaccion tipo Gasto
     agregarTransaccionGasto(){ 
     this.transaccionService.agregarTransaccionGastoService(this.gasto).subscribe(resultado => {
-        this.reset();
+        this.resetGasto();
         },       
         error => { console.log(JSON.stringify(error));
         });   
@@ -129,7 +129,7 @@ export class TransaccionComponent implements OnInit {
     //Agregar Transaccion tipo Ingreso
     agregarTransaccionIngreso(){ 
       this.transaccionService.agregarTransaccionGastoService(this.ingreso).subscribe(resultado => {
-          this.reset();
+          this.resetIngreso();
           },       
           error => { console.log(JSON.stringify(error));
           });   
@@ -165,7 +165,7 @@ export class TransaccionComponent implements OnInit {
 
 
      //Metodo para limpiar las variables
-      reset()
+      resetGasto()
       {
         this.gasto.Id = '';
         this.gasto.ConceptoId = '';
@@ -176,6 +176,19 @@ export class TransaccionComponent implements OnInit {
         this.gasto.Comentario = '';
         this.gasto.Referencia = '';
       }
+
+       //Metodo para limpiar las variables
+       resetIngreso()
+       {
+         this.ingreso.Id = '';
+         this.ingreso.ConceptoId = '';
+         this.ingreso.SemanaId = '';
+         this.ingreso.AreaId = '';
+         this.ingreso.Monto = '';
+         this.ingreso.FechaCreacion = '';
+         this.ingreso.Comentario = '';
+         this.ingreso.Referencia = '';
+       }
 
 
 }

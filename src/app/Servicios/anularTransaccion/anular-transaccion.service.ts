@@ -17,6 +17,10 @@ export class AnularTransaccionService {
     return this.httpClient.get(`${this.url.url}Api/Transaccion/GetById/` + identificador);   
   }
 
+  obtenerRazonesAnulacionService():Observable<any> {
+    return this.httpClient.get(`${this.url.url}Api/Transaccion/GetRazonesAnulacion`);   
+  }
+
   anularTransaccionService(transaccion: any){
     let Json = JSON.stringify(transaccion);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');

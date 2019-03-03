@@ -1,0 +1,69 @@
+
+<br>
+<div id="formulario" class="container-fluid">
+  <div class="row">
+        <div class="col-xs-10 col-sm-10 col-md-8">
+            
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="form-group">
+                            <label for="controlCodigo">Codigo</label>
+                            <input type="text" 
+                            [(ngModel)]="razon.Codigo"  
+                            class="form-control" 
+                            name="codigo" id="codigo">
+                        </div>
+                   </div>
+    
+                   <div class="col-xs-4 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label for="controlDescripcion">Descripcion</label>
+                            <input type="text" 
+                            [(ngModel)]="razon.Descripcion" 
+                            class="form-control" 
+                            name="descripcion"
+                            id="descripcion" >
+                        </div>
+                    </div>
+              
+            </div>
+  </div>
+
+  <div class="row">
+        <div class="col-xs-8 col-sm-4 col-md-4">
+                    <div class="col-xs-4 col-sm-2 col-md-2">
+                      <button (click)="agregarRazon()" class="btn btn-primary" id="agregarRazon">Agregar</button>
+                    </div>
+
+                   <div class="col-xs-4 col-sm-2 col-md-2">
+                     <button (click)="actualizarRazon()" class="btn btn-primary"  id="actualizarRazon">Actualizar</button>
+                    </div>
+              
+            </div>
+  </div>
+
+
+</div>
+
+
+<br>
+<br>
+<br>
+<table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
+[dtTrigger]="dtTrigger" id="datatable">
+<thead>
+<tr>
+  <th>Editar</th>
+  <th>Eliminar</th>
+  <th>Codigo</th>
+  <th>Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let razon of razones">
+  <td> <button id="editar" (click)="editarRazon(razon.Id)" class="btn btn-primary">Edit</button> </td>
+  <td> <button id="Eliminar" (click)="eliminarRazon(razon.Id)" class="btn btn-danger">Elim</button> </td>
+  <td>{{ razon.Codigo }}</td>
+  <td>{{ razon.Descripcion }}</td>
+</tr>
+</tbody>
+</table>

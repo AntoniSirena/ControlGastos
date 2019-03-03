@@ -10,7 +10,7 @@ import { TransaccionComponent } from './mantenimientos/transaccion/transaccion.c
 import { AnularTransaccionComponent } from './mantenimientos/anular-transaccion/anular-transaccion.component';
 import { HistorialTransaccionAnuladaComponent } from './mantenimientos/historial-transaccion-anulada/historial-transaccion-anulada.component';
 import { ResumenTransaccionComponent } from './estadisticas/resumen-transaccion/resumen-transaccion.component';
-
+import { RazonesAnulacionTransaccionComponent } from './mantenimientos/razones-anulacion-transaccion/razones-anulacion-transaccion.component';
 
 
 const routes: Routes = [
@@ -160,6 +160,14 @@ const routes: Routes = [
         component: PeriodosComponent,
         data: {
           title: 'Periodos',
+        }
+      },
+
+      {
+        path: 'razones-anulacion-transaccion',
+        component: RazonesAnulacionTransaccionComponent,
+        data: {
+          title: 'Razones de anulacion para una Transaccion',
         }
       }
 

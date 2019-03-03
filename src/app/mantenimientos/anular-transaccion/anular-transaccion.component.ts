@@ -19,11 +19,14 @@ export class AnularTransaccionComponent implements OnInit {
    dtTrigger: Subject<any> = new Subject();
  
    transaccion: any[] = [];
-   objetoTrasaccion: any = {Id:''};
+   razonesAnulacion: any[] = [];
+   objetoTrasaccion: any = {Id:'', RazonAnulacionId:''};
  
  
 
   ngOnInit() {
+
+    this.obtenerRazonesAnulacion();
 
     //Bloque para renderisar el DataTable en el html
     this.dtOptions = {
@@ -34,9 +37,7 @@ export class AnularTransaccionComponent implements OnInit {
 
     this.dtTrigger.next();
 
-
   }
-
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
@@ -45,9 +46,18 @@ export class AnularTransaccionComponent implements OnInit {
   
   //Obtener transcion por id
   obtenerTransaccionById(identificador){
-    debugger;
     this.anularTransaccionService.obtenerTransaccionByIdService(identificador).subscribe(resultado => {
     this.transaccion = resultado;
+    },
+    error => { console.log(JSON.stringify(error));
+    });
+
+    }
+
+     //Obtener razones de anulacion
+  obtenerRazonesAnulacion(){
+    this.anularTransaccionService.obtenerRazonesAnulacionService().subscribe(resultado => {
+    this.razonesAnulacion = resultado;
     },
     error => { console.log(JSON.stringify(error));
     });
@@ -67,6 +77,7 @@ export class AnularTransaccionComponent implements OnInit {
       
      reset(){
        this.objetoTrasaccion.Id = '';
+       this.objetoTrasaccion.RazonAnulacionId = '';
      } 
 
 
