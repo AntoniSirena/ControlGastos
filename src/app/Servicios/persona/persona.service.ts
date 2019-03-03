@@ -21,7 +21,7 @@ export class PersonaService {
   }
 
   obtenerPersonaByIdService(identificador):Observable<any> {
-    return this.httpClient.get(`${this.url.url}Api/Persona/GetById/" + identificador`);   
+    return this.httpClient.get(`${this.url.url}Api/Persona/GetById/` + identificador);   
   }
 
   agregarPersonaService(persona: any){

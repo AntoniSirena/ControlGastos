@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 
 import { LayoutModule } from 'angular-admin-lte';
+import { BoxModule } from 'angular-admin-lte'; 
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -21,6 +23,7 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
+
 import { PersonaComponent } from './mantenimientos/persona/persona.component';
 import { AreaComponent } from './mantenimientos/area/area.component';
 import { PeriodosComponent } from './mantenimientos/periodos/periodos.component';
@@ -30,6 +33,7 @@ import { HistorialTransaccionAnuladaComponent } from './mantenimientos/historial
 import { FilterElementsPipe } from './pipes/filter-elements.pipe';
 import { GroupByPipe } from './pipes/group-by.pipe';
 import { ResumenTransaccionComponent } from './estadisticas/resumen-transaccion/resumen-transaccion.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -37,11 +41,13 @@ import { ResumenTransaccionComponent } from './estadisticas/resumen-transaccion/
     AppRoutingModule,
     CoreModule,
     LayoutModule.forRoot(adminLteConf),
+    BoxModule,
     LoadingPageModule, MaterialBarModule,
     DataTablesModule,
     FormsModule,
     ReactiveFormsModule,
-    FilterPipeModule
+    FilterPipeModule,
+    NgbModule.forRoot()
   ],
   declarations: [
     AppComponent,

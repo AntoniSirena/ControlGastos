@@ -45,6 +45,7 @@ export class AnularTransaccionComponent implements OnInit {
   
   //Obtener transcion por id
   obtenerTransaccionById(identificador){
+    debugger;
     this.anularTransaccionService.obtenerTransaccionByIdService(identificador).subscribe(resultado => {
     this.transaccion = resultado;
     },

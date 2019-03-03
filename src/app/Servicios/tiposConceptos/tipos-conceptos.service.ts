@@ -30,6 +30,10 @@ export class TiposConceptosService {
     return this.httpClient.get(`${this.url.url}Api/ControlGastos/GetTiposGastos`); 
   }
 
+  obtenerTiposIngresosService():Observable<any> {
+    return this.httpClient.get(`${this.url.url}Api/ControlGastos/GetTiposIngresos`); 
+  }
+
   agregarTipoConceptoService(tipoConcepto: any){
     let Json = JSON.stringify(tipoConcepto);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');

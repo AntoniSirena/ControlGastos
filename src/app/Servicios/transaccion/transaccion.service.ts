@@ -15,7 +15,7 @@ export class TransaccionService {
   constructor(private httpClient: HttpClient ) { }
 
 
-  obtenerGastoService():Observable<any> {
+  obtenerTransaccionesService():Observable<any> {
     return this.httpClient.get(`${this.url.url}Api/Transaccion/GetAll`);   
   }
 

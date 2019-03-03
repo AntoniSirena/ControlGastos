@@ -16,7 +16,7 @@
                                   <div class="form-group">
                                       <label for="controlTiposConceptos">Concepto</label>
                                       <select class="form-control" id="TiposConcepto" [(ngModel)]="gasto.ConceptoId">
-                                          <option *ngFor="let item of tiposConceptos" [value]="item.Id">{{item.Descripcion}}</option>
+                                          <option *ngFor="let item of tiposConceptosGastos" [value]="item.Id">{{item.Descripcion}}</option>
                                       </select>
                                   </div>
                               </div>
@@ -102,7 +102,6 @@
           
           </div>
 
-
                   
         <br>
         <br>
@@ -160,7 +159,7 @@
                                       <div class="form-group">
                                           <label for="controlTiposConceptos">Concepto</label>
                                           <select class="form-control" id="TiposConcepto" [(ngModel)]="ingreso.ConceptoId">
-                                              <option *ngFor="let item of tiposConceptos" [value]="item.Id">{{item.Descripcion}}</option>
+                                              <option *ngFor="let item of tiposConceptosIngresos" [value]="item.Id">{{item.Descripcion}}</option>
                                           </select>
                                       </div>
                                   </div>
@@ -245,7 +244,6 @@
               
               
               </div>
-    
     
                       
             <br>

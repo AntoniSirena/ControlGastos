@@ -22,6 +22,9 @@ export class TransaccionComponent implements OnInit {
   dtTrigger: Subject<any> = new Subject();
 
   tiposConceptos: any[] = [];
+  tiposConceptosGastos: any[] = [];
+  tiposConceptosIngresos: any[] = [];
+
   semanas: any[] = [];
   areas: any[] = [];
 
@@ -54,7 +57,7 @@ export class TransaccionComponent implements OnInit {
     };
 
 
-  //Metodo para segmentar las transacciones por gastos e ingresos
+  //Metodo para segmentar las transacciones según su origen
    asignarTransacciones(){
    this.transacciones.forEach(element => {
      if(element.Origen == "Gasto"){
@@ -67,6 +70,21 @@ export class TransaccionComponent implements OnInit {
    }); 
 
    }
+
+
+    //Metodo para segmentar los tipos de conceptos según su origen
+  asignarTiposConceptos(){
+    this.tiposConceptos.forEach(element => {
+      if(element.Origen == "Gasto"){
+      this.tiposConceptosGastos.push(element);
+      }
+ 
+      if(element.Origen == "Ingreso"){
+       this.tiposConceptosIngresos.push(element);
+       } 
+    }); 
+ 
+    }
 
 
    //Primer metodo que se ejecuta al momento de cargar el sistema
@@ -83,9 +101,10 @@ export class TransaccionComponent implements OnInit {
       processing: true
     };
 
-    this.transaccionService.obtenerGastoService().subscribe(data  => {
+    this.transaccionService.obtenerTransaccionesService().subscribe(data  => {
       this.transacciones = data;
       this.asignarTransacciones();
+      this.asignarTiposConceptos();
       this.dtTrigger.next();
     });
 

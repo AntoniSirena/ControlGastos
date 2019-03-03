@@ -1,14 +1,111 @@
 
-<div class="container-fluid">
 
-        <form>
+<mk-tabs header="Seleccione un tipo" tabsColor = "red" >
+
+  <!-- Formulario para registrar los conceptos tipo gastos -->
+  <mk-tab header="GASTOS">
+
+      <h3 id="gastos"> Concepto de Gastos </h3>
+
+
+      <br>
+      <div class="container-fluid">
+
+        <div class="row">
+              <div class="col-xs-10 col-sm-10 col-md-8">                    
+                          <div class="col-xs-2 col-sm-2 col-md-2">
+                              <div class="form-group">
+                                  <label for="controlCodigo">Codigo</label>
+                                  <input type="text" 
+                                  [(ngModel)]="tipoConceptoGasto.Codigo"  
+                                  class="form-control" 
+                                  name="codigo" id="codigo" >                                  
+                              </div>
+                        </div>
+          
+                        <div class="col-xs-4 col-sm-4 col-md-3">
+                              <div class="form-group">
+                                  <label for="controlDescripcion">Descripcion</label>
+                                  <input type="text" 
+                                  [(ngModel)]="tipoConceptoGasto.Descripcion" 
+                                  class="form-control" 
+                                  name="descripcion" id="descripcion" >
+                              </div>
+                          </div>
+
+                              <div class="col-xs-4 col-sm-4 col-md-3">
+                                <div class="form-group">
+                                    <label for="controlTiposGastos">Tipo</label>
+                                    <select class="form-control" id="tiposGasto" [(ngModel)] = "tipoConceptoGasto.TipoGastoId">
+                                        <option *ngFor="let item of tiposGastos " [value]="item.Id">{{item.Descripcion}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                    
+                  </div>
+        </div>
+
+        <div class="row">
+              <div class="col-xs-8 col-sm-4 col-md-4">
+                          <div class="col-xs-4 col-sm-2 col-md-2">
+                            <button (click)="agregarTipoConceptoGasto()" class="btn btn-primary" id="agregarTipoConcepto">Agregar</button>
+                          </div>
+
+                        <div class="col-xs-4 col-sm-2 col-md-2">
+                          <button (click)="actualizarTipoConceptoGasto()" class="btn btn-primary"  id="actualizarTipoConcepto">Actualizar</button>
+                          </div>
+                    
+                  </div>
+        </div>
+
+      </div>
+
+
+      <br>
+      <br>
+      <br>
+      <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
+      [dtTrigger]="dtTrigger" id="datatable">
+      <thead>
+      <tr>
+      <th>Editar</th>
+      <th>Eliminar</th>
+      <th>Codigo</th>
+      <th>Descripcion</th>
+      <th>Tipo</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let tiposConcepto of tiposConceptosGastos">
+      <td> <button id="editar" (click)="editarTipoConceptoGasto(tiposConcepto.Id)" class="btn btn-primary">Edit</button> </td>
+      <td> <button id="Eliminar" (click)="eliminarTipoConcepto(tiposConcepto.Id)" class="btn btn-danger">Elim</button> </td>
+      <td>{{ tiposConcepto.Codigo }}</td>
+      <td>{{ tiposConcepto.Descripcion }}</td>
+      <td>{{ tiposConcepto.TiposGastos.Descripcion }}</td>
+      </tr>
+      </tbody>
+      </table>
+
+   
+  </mk-tab>
+
+
+
+  <!-- Formulario para registrar los conceptos tipo ingresoos -->
+  <mk-tab header="INGRESOS">
+
+          <h3 id="gastos"> Concepto de Ingresos </h3>
+
+          <br>
+          <div class="container-fluid">
+    
             <div class="row">
                   <div class="col-xs-10 col-sm-10 col-md-8">                    
                               <div class="col-xs-2 col-sm-2 col-md-2">
                                   <div class="form-group">
                                       <label for="controlCodigo">Codigo</label>
                                       <input type="text" 
-                                      [(ngModel)]="tipoConcepto.Codigo"  
+                                      [(ngModel)]="tipoConceptoIngreso.Codigo"  
                                       class="form-control" 
                                       name="codigo" id="codigo" >                                  
                                   </div>
@@ -18,65 +115,67 @@
                                   <div class="form-group">
                                       <label for="controlDescripcion">Descripcion</label>
                                       <input type="text" 
-                                      [(ngModel)]="tipoConcepto.Descripcion" 
+                                      [(ngModel)]="tipoConceptoIngreso.Descripcion" 
                                       class="form-control" 
                                       name="descripcion" id="descripcion" >
                                   </div>
                               </div>
-
+    
                                   <div class="col-xs-4 col-sm-4 col-md-3">
                                     <div class="form-group">
-                                        <label for="controlTiposGastos">Tipo</label>
-                                        <select class="form-control" id="tiposGasto" [(ngModel)] = "tipoConcepto.tipoGastoId">
-                                            <option *ngFor="let item of tiposGastos " [value]="item.Id">{{item.Descripcion}}</option>
+                                        <label for="controlTiposIngreso">Tipo</label>
+                                        <select class="form-control" id="tiposIngresos" [(ngModel)] = "tipoConceptoIngreso.TipoIngresoId">
+                                            <option *ngFor="let item of tiposIngresos " [value]="item.Id">{{item.Descripcion}}</option>
                                         </select>
                                     </div>
                                 </div>
                         
                       </div>
             </div>
-
+    
             <div class="row">
                   <div class="col-xs-8 col-sm-4 col-md-4">
                               <div class="col-xs-4 col-sm-2 col-md-2">
-                                <button (click)="agregarTipoConcepto()" class="btn btn-primary" id="agregarTipoConcepto">Agregar</button>
+                                <button (click)="agregarTipoConceptoIngreso()" class="btn btn-primary" id="agregarTipoConceptoIngreso">Agregar</button>
                               </div>
-
+    
                             <div class="col-xs-4 col-sm-2 col-md-2">
-                              <button (click)="actualizarTipoConcepto()" class="btn btn-primary"  id="actualizarTipoConcepto">Actualizar</button>
+                              <button (click)="actualizarTipoConceptoIngreso()" class="btn btn-primary"  id="actualizarTipoConceptoIngreso">Actualizar</button>
                               </div>
                         
                       </div>
             </div>
+    
+          </div>
+    
+    
+          <br>
+          <br>
+          <br>
+          <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
+          [dtTrigger]="dtTrigger" id="datatable">
+          <thead>
+          <tr>
+          <th>Editar</th>
+          <th>Eliminar</th>
+          <th>Codigo</th>
+          <th>Descripcion</th>
+          <th>Tipo</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of tiposConceptosIngresos">
+          <td> <button id="editar" (click)="editarTipoConceptoIngreso(item.Id)" class="btn btn-primary">Edit</button> </td>
+          <td> <button id="Eliminar" (click)="eliminarTipoConcepto(item.Id)" class="btn btn-danger">Elim</button> </td>
+          <td>{{ item.Codigo }}</td>
+          <td>{{ item.Descripcion }}</td>
+          <td>{{ item.TipoIngresos.Descripcion }}</td>
+          </tr>
+          </tbody>
+          </table>
+    
+      
+    </mk-tab>
 
-      </form>
 
-
-</div>
-
-
-
-<br>
-<br>
-<br>
-<table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
-[dtTrigger]="dtTrigger" id="datatable">
-<thead>
-  <tr>
-    <th>Editar</th>
-    <th>Eliminar</th>
-    <th>Codigo</th>
-    <th>Descripcion</th>
-    <th>Tipo de gasto</th>
-  </tr>
-</thead>
-<tbody>
-  <tr *ngFor="let tiposConcepto of tiposConceptos">
-    <td> <button id="editar" (click)="editarTipoConcepto(tiposConcepto.Id)" class="btn btn-primary">Edit</button> </td>
-    <td> <button id="Eliminar" (click)="eliminarTipoConcepto(tiposConcepto.Id)" class="btn btn-danger">Elim</button> </td>
-    <td>{{ tiposConcepto.Codigo }}</td>
-    <td>{{ tiposConcepto.Descripcion }}</td>
-    <td>{{ tiposConcepto.TiposGastos.Descripcion }}</td>
-  </tr>
-</tbody>
-</table>
+</mk-tabs>

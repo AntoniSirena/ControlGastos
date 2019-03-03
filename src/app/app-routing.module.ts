@@ -135,7 +135,7 @@ const routes: Routes = [
         path: 'tipos-conceptos',
         component: TiposConceptosComponent,
         data: {
-          title: 'Tipos de conceptos',
+          title: '',
         }
       },
 

@@ -85,6 +85,7 @@ export class AreaComponent implements OnInit {
 
 //Editar
   editarArea(identificador){
+    debugger;
     this.areaService.obtenerAreaByIdService(identificador).subscribe(resultado => {
       this.area.Id = resultado[0].Id;
       this.area.Codigo = resultado[0].Codigo;
