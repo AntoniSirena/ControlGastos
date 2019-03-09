@@ -186,7 +186,7 @@ const routes: Routes = [
         path: 'transaccion',
         component: TransaccionComponent,
         data: {
-          title: '',
+          title: 'Seleccione el tipo de transacción que desea registrar',
         }
       },
 
@@ -203,7 +203,7 @@ const routes: Routes = [
         path: 'historial-transaccion-anulada',
         component: HistorialTransaccionAnuladaComponent,
         data: {
-          title: 'Seleccione un tipo de transacción para ver su historico',
+          title: 'Seleccione un tipo de transacción para ver su historial',
         }
       }
 
