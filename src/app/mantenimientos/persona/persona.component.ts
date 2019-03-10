@@ -19,6 +19,7 @@ export class PersonaComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
 
+  tiposPersonas : any[] = [];
   personas : any[] = [];
   persona: any = {
     Id:'',
@@ -28,14 +29,16 @@ export class PersonaComponent implements OnInit {
     SegundoApellido:'',
     FechaNacimiento:'',
     Telefono:'',
-    Direccion:''
+    Direccion:'',
+    TipoPersonaId:''
   };
 
 
    //Primer metodo que se ejecuta al momento de cargar el sistema
   ngOnInit() {
 
-    
+    this.obtenerTiposPersonas();
+     
     //Bloque para renderisar el DataTable en el html
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -62,6 +65,15 @@ export class PersonaComponent implements OnInit {
   }
   
  
+  
+  //obtener Tipos de Personas
+  obtenerTiposPersonas(){ 
+   this.personaService.obtenerTiposPersonasService().subscribe(data => {
+      this.tiposPersonas = data;
+      },       
+      error => { console.log(JSON.stringify(error));
+      });   
+   }
   
  //Agregar
  agregarPersona(){ 
@@ -98,6 +110,7 @@ export class PersonaComponent implements OnInit {
       this.persona.FechaNacimiento = resultado[0].FechaNacimiento;
       this.persona.Telefono = resultado[0].Telefono;
       this.persona.Direccion = resultado[0].Direccion;
+      this.persona.TipoPersonaId = resultado[0].TipoPersonaId;
 
    //Sentencia para deshabilitar el boton Agregar al hacer clic en el boton editar
    $('#agregarPersona').attr('disabled', true);
@@ -131,6 +144,7 @@ reset()
   this.persona.FechaNacimiento = '';
   this.persona.Telefono = '';
   this.persona.Direccion = '';
+  this.persona.TipoPersonaId = '';
 }
 
 

@@ -24,6 +24,10 @@ export class PersonaService {
     return this.httpClient.get(`${this.url.url}Api/Persona/GetById/` + identificador);   
   }
 
+  obtenerTiposPersonasService():Observable<any> {
+    return this.httpClient.get(`${this.url.url}Api/Persona/GetTiposPersonas`); 
+  }
+
   agregarPersonaService(persona: any){
     let Json = JSON.stringify(persona);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
