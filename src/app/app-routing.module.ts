@@ -11,6 +11,8 @@ import { AnularTransaccionComponent } from './mantenimientos/anular-transaccion/
 import { HistorialTransaccionAnuladaComponent } from './mantenimientos/historial-transaccion-anulada/historial-transaccion-anulada.component';
 import { ResumenTransaccionComponent } from './estadisticas/resumen-transaccion/resumen-transaccion.component';
 import { RazonesAnulacionTransaccionComponent } from './mantenimientos/razones-anulacion-transaccion/razones-anulacion-transaccion.component';
+import { UsersComponent } from './mantenimientos/users/users.component';
+
 
 
 const routes: Routes = [
@@ -168,6 +170,14 @@ const routes: Routes = [
         component: RazonesAnulacionTransaccionComponent,
         data: {
           title: 'Razones de anulacion para una Transaccion',
+        }
+      },
+
+      {
+        path: 'users',
+        component: UsersComponent,
+        data: {
+          title: 'Mantenimiento de usuarios',
         }
       }
 

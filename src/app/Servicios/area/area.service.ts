@@ -11,8 +11,7 @@ export class AreaService {
 
   private url = new Url();
 
-  constructor(private httpClient: HttpClient) {
-   }
+  constructor(private httpClient: HttpClient) { }
 
 
    obtenerAreasService():Observable<any> {

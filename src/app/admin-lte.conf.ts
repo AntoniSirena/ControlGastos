@@ -31,18 +31,19 @@ export const adminLteConf = {
     //{label: 'Tabs', route: 'tabs', iconClasses: 'fa fa-th'},
 
     //Mantenimientos
-    {label: 'Mantenimientos', iconClasses: 'fa fa-files-o', 
+    {label: 'Mantenimientos', iconClasses: 'fa fa-cogs', 
     children: [
         {label: 'Tipos de conceptos', route: 'mantenimientos/tipos-conceptos'},
         {label: 'Personas', route: 'mantenimientos/persona'},
         {label: 'Areas', route: 'mantenimientos/area'},
         {label: 'Periodos', route: 'mantenimientos/periodo'},
-        {label: 'Razones de anulacion', route: 'mantenimientos/razones-anulacion-transaccion'}      
+        {label: 'Razones de anulacion', route: 'mantenimientos/razones-anulacion-transaccion'},
+        {label: 'Usuarios', route: 'mantenimientos/users'}      
       
     ]},
 
     //Transaccion
-    {label: 'Transacción', iconClasses: 'fa fa-files-o', 
+    {label: 'Transacción', iconClasses: 'fa fa-pencil-square-o', 
     children: [
         {label: 'Registrar transacción', route: 'mantenimientos/transaccion'},
         {label: 'Anular transacción', route: 'mantenimientos/anular-transaccion'},
@@ -50,7 +51,7 @@ export const adminLteConf = {
     ]},
 
     //Estadisticas
-    {label: 'Estadísticas', iconClasses: 'fa fa-files-o', 
+    {label: 'Estadísticas', iconClasses: 'fa fa-pie-chart', 
     children: [
         {label: 'Resumen de Ingresos/Gastos', route: 'estadisticas/resumen-transaccion'}  
     ]}

@@ -1,0 +1,94 @@
+
+<br>
+
+<div id="formulario" class="container-fluid">
+    <div class="row">
+          <div class="col-xs-10 col-sm-10 col-md-8">
+              
+                  <div class="col-xs-4 col-sm-4 col-md-3">
+                      <div class="form-group">
+                          <label for="controlPersona">Persona</label>
+                          <select class="form-control" id="persona" [(ngModel)]="user.PersonaId">
+                              <option *ngFor="let item of personas " [value]="item.Id">{{item.NombreCompleto}}</option>
+                          </select>
+                      </div>
+                  </div>
+
+                  <div class="col-xs-3 col-sm-3 col-md-2">
+                          <div class="form-group">
+                              <label for="controlNombreUsuario">Usuario</label>
+                              <input type="text" 
+                              [(ngModel)]="user.NombreUsuario"  
+                              class="form-control" 
+                              name="nombreUsuario" id="nombreUsuario">
+                          </div>
+                  </div>
+      
+                  <div class="col-xs-2 col-sm-2 col-md-2">
+                          <div class="form-group">
+                              <label for="controlPassword">Contraseña</label>
+                              <input type="Password" 
+                              [(ngModel)]="user.Password" 
+                              class="form-control" 
+                              name="password"
+                              id="password">
+                          </div>
+                   </div>
+
+                  <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <label for="controlEmail">Email</label>
+                            <input type="email" 
+                            [(ngModel)]="user.Email" 
+                            class="form-control" 
+                            name="email"
+                            id="email">
+                        </div>
+                   </div>
+                
+              </div>
+    </div>
+  
+    <div class="row">
+          <div class="col-xs-8 col-sm-4 col-md-4">
+                      <div class="col-xs-4 col-sm-2 col-md-2">
+                        <button (click)="agregarUser()" class="btn btn-primary" id="agregarUser">Agregar</button>
+                      </div>
+  
+                    <div class="col-xs-4 col-sm-2 col-md-2">
+                      <button (click)="actualizarUser()" class="btn btn-primary"  id="actualizarUser">Actualizar</button>
+                      </div>
+                
+              </div>
+    </div>
+  
+  
+</div>
+
+
+<br>
+<br>
+<br>
+<table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
+[dtTrigger]="dtTrigger" id="datatable">
+<thead>
+  <tr>
+    <th>Editar</th>
+    <th>Eliminar</th>
+    <th>Persona</th>
+    <th>Usuario</th>
+    <th>Contraseña</th>
+    <th>Email</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let item of users">
+    <td> <button id="editar" (click)="editarUser(item.Id)" class="btn btn-primary">Edit</button> </td>
+    <td> <button id="Eliminar" (click)="eliminarUser(item.Id)" class="btn btn-danger">Elim</button> </td>
+    <td>{{ item.Personas.NombreCompleto}}</td>
+    <td>{{ item.NombreUsuario }}</td>
+    <td>{{ item.Password}}</td>
+    <td>{{ item.Email}}</td>
+  </tr>
+</tbody>
+</table>
