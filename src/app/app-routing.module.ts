@@ -12,19 +12,20 @@ import { HistorialTransaccionAnuladaComponent } from './mantenimientos/historial
 import { ResumenTransaccionComponent } from './estadisticas/resumen-transaccion/resumen-transaccion.component';
 import { RazonesAnulacionTransaccionComponent } from './mantenimientos/razones-anulacion-transaccion/razones-anulacion-transaccion.component';
 import { UsersComponent } from './mantenimientos/users/users.component';
-
+import { PortadaComponent } from './portada/portada.component';
 
 
 const routes: Routes = [
   {
   path: '',
+
   data: {
-      title: 'Get Started'
+      title: ''
   },
   children: [
     {
       path: '',
-      component: HomeComponent
+      component: PortadaComponent
     }, {
       path: 'accordion',
       loadChildren: './+accordion/accordion.module#AccordionModule',

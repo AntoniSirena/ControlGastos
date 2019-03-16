@@ -36,6 +36,8 @@ import { ResumenTransaccionComponent } from './estadisticas/resumen-transaccion/
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RazonesAnulacionTransaccionComponent } from './mantenimientos/razones-anulacion-transaccion/razones-anulacion-transaccion.component';
 import { UsersComponent } from './mantenimientos/users/users.component';
+import { LoginComponent } from './mantenimientos/login/login.component';
+import { PortadaComponent } from './portada/portada.component';
 
 @NgModule({
   imports: [
@@ -65,7 +67,9 @@ import { UsersComponent } from './mantenimientos/users/users.component';
     GroupByPipe,
     ResumenTransaccionComponent,
     RazonesAnulacionTransaccionComponent,
-    UsersComponent
+    UsersComponent,
+    LoginComponent,
+    PortadaComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
