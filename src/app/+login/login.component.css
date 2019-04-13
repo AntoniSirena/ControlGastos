@@ -2,3 +2,11 @@
   overflow: hidden;
   min-height: 100%;
 }
+
+#mensaje{
+  color: red;
+}
+
+#header{
+  color: dodgerblue;
+}

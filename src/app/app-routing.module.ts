@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   children: [
     {
-      path: '',
+      path: 'portada',
       component: PortadaComponent
     }, {
       path: 'accordion',
@@ -255,7 +255,8 @@ const routes: Routes = [
     data: {
       customLayout: true
     }
-  },
+  }
+
 ];
 
 @NgModule({
