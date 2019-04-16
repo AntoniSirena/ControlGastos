@@ -18,6 +18,7 @@ export class PersonaComponent implements OnInit {
   //Variable globales
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
+  valor: boolean = false;
 
   tiposPersonas : any[] = [];
   personas : any[] = [];
@@ -49,21 +50,16 @@ export class PersonaComponent implements OnInit {
     this.personaService.obtenerPersonasService().subscribe(data => {
       this.personas = data;
       this.dtTrigger.next();
+      this.ngOnDestroy();
     });
-    
-    
-    //Sentencia para deshabilitar el boton actualizar cuando cargue el sistema
-    $('#actualizarPersona').attr('disabled', true);
-
 
   }
 
-
-
-  ngOnDestroy(): void {
-    this.dtTrigger.unsubscribe();
-  }
-  
+//Metodo para destruir y reinicializar el dataTable
+ngOnDestroy(): void {
+  this.dtTrigger.unsubscribe();
+  $('#datatable').dataTable().fnDestroy();
+}
  
   
   //obtener Tipos de Personas
@@ -79,6 +75,7 @@ export class PersonaComponent implements OnInit {
  agregarPersona(){ 
   this.personaService.agregarPersonaService(this.persona).subscribe(resultado => {
       this.reset();
+      this.ngOnInit();
       },       
       error => { console.log(JSON.stringify(error));
       });   
@@ -88,12 +85,9 @@ export class PersonaComponent implements OnInit {
  actualizarPersona(){
   this.personaService.actualizarPersonaService(this.persona).subscribe(resultado => {
     this.reset();
-
-    //Sentencia para habilitar el boton Agregar al hacer clic en el boton actualizar
-   $('#agregarPersona').attr('disabled', false);
-
-   //Sentencia para deshabilitar el boton Actualizar al hacer clic en el boton actualizar
-   $('#actualizarPersona').attr('disabled', true);
+    //valor para eleminar el boton actalizar del Dom
+    this.valor = false;
+    this.ngOnInit();
     },
     error => { console.log(JSON.stringify(error));
     });  
@@ -112,11 +106,8 @@ export class PersonaComponent implements OnInit {
       this.persona.Direccion = resultado[0].Direccion;
       this.persona.TipoPersonaId = resultado[0].TipoPersonaId;
 
-   //Sentencia para deshabilitar el boton Agregar al hacer clic en el boton editar
-   $('#agregarPersona').attr('disabled', true);
-
-   //Sentencia para habilitar el boton Actualizar al hacer clic en el boton editar
-   $('#actualizarPersona').attr('disabled', false);
+      //valor para eleminar el boton agregar del Dom
+      this.valor = true;
 
     },
     error => { console.log(JSON.stringify(error));
@@ -128,6 +119,7 @@ export class PersonaComponent implements OnInit {
 //Eliminar
 eliminarPersona(identificador){
   this.personaService.eliminarPersonaService(identificador).subscribe(resultado => {
+    this.ngOnInit();
   },
   error => { console.log(JSON.stringify(error));
   });

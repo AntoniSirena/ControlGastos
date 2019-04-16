@@ -22,6 +22,8 @@ export class AreaComponent implements OnInit {
   areas: any[] = [];
   personas : any[] = [];
   area: any = {Id:'', Codigo:'' ,Descripcion:'', PersonaId: ''};
+  valor: boolean = false;
+
 
 
   ngOnInit() {
@@ -31,24 +33,25 @@ export class AreaComponent implements OnInit {
     //Bloque para renderisar el DataTable en el html
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 8,
+      pageLength: 12,
       processing: true
     };
 
     this.areaService.obtenerAreasService().subscribe(data => {
       this.areas = data;
       this.dtTrigger.next();
+      this.ngOnDestroy();
     });
-    
-    //Sentencia para deshabilitar el boton actualizar cuando cargue el sistema
-    $('#actualizarArea').attr('disabled', true);
 
   }
 
-
+  //Metodo para destruir y reinicializar el dataTable
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
+    $('#datatable').dataTable().fnDestroy();
   }
+
+
 
  //obtener Personas
  obtenerPersonas(){ 
@@ -63,6 +66,7 @@ export class AreaComponent implements OnInit {
  agregarArea(){ 
   this.areaService.agregarAreaService(this.area).subscribe(resultado => {
       this.reset();
+      this.ngOnInit();
       },       
       error => { console.log(JSON.stringify(error));
       });   
@@ -71,13 +75,10 @@ export class AreaComponent implements OnInit {
 //Actualizar
  actualizarArea(){
   this.areaService.actualizarAreaService(this.area).subscribe(resultado => {
+    //valor para eleminar el boton actualizar del Dom
+    this.valor = false;
     this.reset();
-
-    //Sentencia para habilitar el boton Agregar al hacer clic en el boton actualizar
-   $('#agregarArea').attr('disabled', false);
-
-   //Sentencia para deshabilitar el boton Actualizar al hacer clic en el boton actualizar
-   $('#actualizarArea').attr('disabled', true);
+    this.ngOnInit();
     },
     error => { console.log(JSON.stringify(error));
     });  
@@ -91,11 +92,8 @@ export class AreaComponent implements OnInit {
       this.area.Descripcion = resultado[0].Descripcion;
       this.area.PersonaId = resultado[0].PersonaId;
 
-   //Sentencia para deshabilitar el boton Agregar al hacer clic en el boton editar
-   $('#agregarArea').attr('disabled', true);
-
-   //Sentencia para habilitar el boton Actualizar al hacer clic en el boton editar
-   $('#actualizarArea').attr('disabled', false);
+      //valor para eleminar el boton agregar del Dom
+      this.valor = true;
 
     },
     error => { console.log(JSON.stringify(error));
@@ -107,6 +105,7 @@ export class AreaComponent implements OnInit {
 //Eliminar
 eliminarArea(identificador){
   this.areaService.eliminarAreaService(identificador).subscribe(resultado => {
+    this.ngOnInit();
   },
   error => { console.log(JSON.stringify(error));
   });

@@ -97,7 +97,7 @@ export class TransaccionComponent implements OnInit {
     //Bloque para renderisar el DataTable en el html
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 8,
+      pageLength: 10,
       processing: true
     };
 

@@ -17,6 +17,7 @@ export class UsersComponent implements OnInit {
   //Variable globales
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
+  valor: boolean = false;
 
   personas: any[] = [];
   users : any[] = [];
@@ -30,24 +31,22 @@ export class UsersComponent implements OnInit {
     //Bloque para renderisar el DataTable en el html
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 8,
+      pageLength: 12,
       processing: true
     };
 
     this.usersService.obtenerUsersService().subscribe(data => {
       this.users = data;
       this.dtTrigger.next();
+      this.ngOnDestroy();
     });
     
-    //Sentencia para deshabilitar el boton actualizar cuando cargue el sistema
-    $('#actualizarUser').attr('disabled', true);
-
   }
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
+    $('#datatable').dataTable().fnDestroy();
   }
-
 
 
   //obtener Personas
@@ -63,6 +62,7 @@ export class UsersComponent implements OnInit {
  agregarUser(){ 
   this.usersService.agregarUserService(this.user).subscribe(resultado => {
       this.reset();
+      this.ngOnInit();
       },       
       error => { console.log(JSON.stringify(error));
       });   
@@ -72,12 +72,9 @@ export class UsersComponent implements OnInit {
  actualizarUser(){
   this.usersService.actualizarUserService(this.user).subscribe(resultado => {
     this.reset();
-
-    //Sentencia para habilitar el boton Agregar al hacer clic en el boton actualizar
-   $('#agregarUser').attr('disabled', false);
-
-   //Sentencia para deshabilitar el boton Actualizar al hacer clic en el boton actualizar
-   $('#actualizarUser').attr('disabled', true);
+    this.ngOnInit();
+     //valor para eleminar el boton actualizar del Dom
+     this.valor = false;
     },
     error => { console.log(JSON.stringify(error));
     });  
@@ -92,11 +89,7 @@ export class UsersComponent implements OnInit {
       this.user.Password = data[0].Password;
       this.user.Email = data[0].Email;
 
-   //Sentencia para deshabilitar el boton Agregar al hacer clic en el boton editar
-   $('#agregarUser').attr('disabled', true);
-
-   //Sentencia para habilitar el boton Actualizar al hacer clic en el boton editar
-   $('#actualizarUser').attr('disabled', false);
+      this.valor = true;
 
     },
     error => { console.log(JSON.stringify(error));
@@ -108,6 +101,7 @@ export class UsersComponent implements OnInit {
 //Eliminar
 eliminarUser(identificador){
   this.usersService.eliminarUserService(identificador).subscribe(data => {
+    this.ngOnInit();
   },
   error => { console.log(JSON.stringify(error));
   });

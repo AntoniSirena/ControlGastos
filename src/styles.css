@@ -8,3 +8,17 @@
 .table-bordered > tfoot > tr > td {
   border-color: #eae3e3;
 }
+
+.class-style{
+  color: red;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.color-verde-transaccion{
+  color: olivedrab;
+}
+
+.color-rojo-transaccion{
+  color: firebrick;
+}

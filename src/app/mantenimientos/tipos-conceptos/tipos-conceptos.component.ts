@@ -16,14 +16,13 @@ export class TiposConceptosComponent implements OnInit, OnDestroy  {
 
 
   //Contructor
-  constructor(private tiposConceptosService: TiposConceptosService, 
-    private http: HttpClient) {  }
+  constructor(private tiposConceptosService: TiposConceptosService, private http: HttpClient) {  }
 
 
   //Variable globales
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
-
+  valor: boolean = false;
 
   tiposConceptos: any[] = [];
   tiposConceptosGastos: any[] = [];
@@ -55,22 +54,15 @@ export class TiposConceptosComponent implements OnInit, OnDestroy  {
       this.tiposConceptos = data;
       this.asignarTiposConceptos();
       this.dtTrigger.next();
+      this.ngOnDestroy();
     });
-    
-    
-    //Sentencia para deshabilitar el boton actualizar cuando cargue el sistema
-    $('#actualizarTipoConcepto').attr('disabled', true);
-
-    //Sentencia para deshabilitar el boton actualizar cuando cargue el sistema
-    $('#actualizarTipoConceptoIngreso').attr('disabled', true);
 
   }
-
-
+  
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
+    $('#datatable').dataTable().fnDestroy();
   }
-
   
 
   //Metodo para segmentar los tipos de conceptos segun su origen
@@ -113,6 +105,7 @@ export class TiposConceptosComponent implements OnInit, OnDestroy  {
     agregarTipoConceptoGasto(){
       this.tiposConceptosService.agregarTipoConceptoService(this.tipoConceptoGasto).subscribe(resultado => {
         this.resetConceptoTipoGasto();
+        this.ngOnInit();
         },       
         error => { console.log(JSON.stringify(error));
         });
@@ -122,6 +115,7 @@ export class TiposConceptosComponent implements OnInit, OnDestroy  {
      agregarTipoConceptoIngreso(){
       this.tiposConceptosService.agregarTipoConceptoService(this.tipoConceptoIngreso).subscribe(resultado => {
         this.resetConceptoTiIngreso();
+        this.ngOnInit();
         },       
         error => { console.log(JSON.stringify(error));
         });
@@ -130,29 +124,22 @@ export class TiposConceptosComponent implements OnInit, OnDestroy  {
   //Actualizar concepto tipo gasto
    actualizarTipoConceptoGasto(){
     this.tiposConceptosService.actualizarTipoConceptoService(this.tipoConceptoGasto).subscribe(resultado => {
+      //valor para eleminar el boton actualizar del Dom
+      this.valor = false;
       this.resetConceptoTipoGasto();
-
-      //Sentencia para habilitar el boton Agregar al hacer clic en el boton actualizar
-     $('#agregarTipoConcepto').attr('disabled', false);
-
-     //Sentencia para deshabilitar el boton Actualizar al hacer clic en el boton actualizar
-     $('#actualizarTipoConcepto').attr('disabled', true);
+      this.ngOnInit();
       },
       error => { console.log(JSON.stringify(error));
       });  
   }
 
-
     //Actualizar concepto tipo ingreso
     actualizarTipoConceptoIngreso(){
       this.tiposConceptosService.actualizarTipoConceptoService(this.tipoConceptoIngreso).subscribe(resultado => {
+        //valor para eleminar el boton actualizar del Dom
+        this.valor = false;
         this.resetConceptoTiIngreso();
-  
-        //Sentencia para habilitar el boton Agregar al hacer clic en el boton actualizar
-       $('#agregarTipoConceptoIngreso').attr('disabled', false);
-  
-       //Sentencia para deshabilitar el boton Actualizar al hacer clic en el boton actualizar
-       $('#actualizarTipoConceptoIngreso').attr('disabled', true);
+        this.ngOnInit();
         },
         error => { console.log(JSON.stringify(error));
         });  
@@ -167,18 +154,13 @@ export class TiposConceptosComponent implements OnInit, OnDestroy  {
         this.tipoConceptoGasto.Descripcion = resultado[0].Descripcion;
         this.tipoConceptoGasto.TipoGastoId = resultado[0].TipoGastoId;
 
-     //Sentencia para deshabilitar el boton Agregar al hacer clic en el boton editar
-     $('#agregarTipoConcepto').attr('disabled', true);
-
-     //Sentencia para habilitar el boton Actualizar al hacer clic en el boton editar
-     $('#actualizarTipoConcepto').attr('disabled', false);
-
+       //valor para eleminar el boton agregar del Dom
+       this.valor = true;
       },
       error => { console.log(JSON.stringify(error));
       });
     
-      }
-
+     }
 
       //Editar concepto tipo ingreso
     editarTipoConceptoIngreso(identificador){
@@ -188,12 +170,8 @@ export class TiposConceptosComponent implements OnInit, OnDestroy  {
         this.tipoConceptoIngreso.Descripcion = resultado[0].Descripcion;
         this.tipoConceptoIngreso.TipoIngresoId = resultado[0].TipoIngresoId;
 
-     //Sentencia para deshabilitar el boton Agregar al hacer clic en el boton editar
-     $('#agregarTipoConceptoIngreso').attr('disabled', true);
-
-     //Sentencia para habilitar el boton Actualizar al hacer clic en el boton editar
-     $('#actualizarTipoConceptoIngreso').attr('disabled', false);
-
+       //valor para eleminar el boton agregar del Dom
+       this.valor = true;
       },
       error => { console.log(JSON.stringify(error));
       });
@@ -204,6 +182,7 @@ export class TiposConceptosComponent implements OnInit, OnDestroy  {
   //Eliminar
   eliminarTipoConcepto(identificador){
     this.tiposConceptosService.eliminarTipoConceptoService(identificador).subscribe(resultado => {
+      this.ngOnInit();
     },
     error => { console.log(JSON.stringify(error));
     });

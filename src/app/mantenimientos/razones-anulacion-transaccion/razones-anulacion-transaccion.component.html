@@ -11,6 +11,7 @@
                             [(ngModel)]="razon.Codigo"  
                             class="form-control" 
                             name="codigo" id="codigo">
+                            <span class="class-style" *ngIf="!razon.Codigo">**</span>
                         </div>
                    </div>
     
@@ -22,6 +23,7 @@
                             class="form-control" 
                             name="descripcion"
                             id="descripcion" >
+                            <span class="class-style" *ngIf="!razon.Descripcion">**</span>
                         </div>
                     </div>
               
@@ -30,12 +32,18 @@
 
   <div class="row">
         <div class="col-xs-8 col-sm-4 col-md-4">
-                    <div class="col-xs-4 col-sm-2 col-md-2">
-                      <button (click)="agregarRazon()" class="btn btn-primary" id="agregarRazon">Agregar</button>
+                    <div class="col-xs-4 col-sm-2 col-md-2" *ngIf="!valor">
+                      <button (click)="agregarRazon()" 
+                      class="btn btn-primary" 
+                      id="agregarRazon"
+                      [disabled]="!razon.Codigo || !razon.Descripcion">Agregar</button>
                     </div>
 
-                   <div class="col-xs-4 col-sm-2 col-md-2">
-                     <button (click)="actualizarRazon()" class="btn btn-primary"  id="actualizarRazon">Actualizar</button>
+                   <div class="col-xs-4 col-sm-2 col-md-2" *ngIf="valor">
+                     <button (click)="actualizarRazon()" 
+                     class="btn btn-primary"  
+                     id="actualizarRazon"
+                     [disabled]="!razon.Codigo || !razon.Descripcion">Actualizar</button>
                     </div>
               
             </div>

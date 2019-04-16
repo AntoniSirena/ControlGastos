@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { PeriodosService } from 'src/app/servicios/periodos/periodos.service';
+import { ThrowStmt } from '@angular/compiler';
 
 
 declare var $;
@@ -19,6 +20,7 @@ export class PeriodosComponent implements OnInit {
     //Variable globales
     dtOptions: DataTables.Settings = {};
     dtTrigger: Subject<any> = new Subject();
+    valor: boolean = false;
   
     periodos : any[] = [];
     periodo: any = {Id:'', Codigo:'', Descripcion:'', FechaApertura: '', FechaCierre: ''};
@@ -29,32 +31,30 @@ export class PeriodosComponent implements OnInit {
     //Bloque para renderisar el DataTable en el html
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 8,
+      pageLength: 12,
       processing: true
     };
 
     this.periodosService.obtenerPeriodoService().subscribe(data => {
       this.periodos = data;
       this.dtTrigger.next();
+      this.ngOnDestroy();
     });
-    
-    
-    //Sentencia para deshabilitar el boton actualizar cuando cargue el sistema
-    $('#actualizarPeriodo').attr('disabled', true)
 
   }
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
+    $('#datatable').dataTable().fnDestroy();
   }
 
- 
   
  //Agregar
  agregarPeriodo(){ 
   this.periodosService.agregarPeriodoService(this.periodo).subscribe(resultado => {
       this.reset();
-      },       
+      this.ngOnInit();  
+      },
       error => { console.log(JSON.stringify(error));
       });   
   }
@@ -63,12 +63,9 @@ export class PeriodosComponent implements OnInit {
  actualizarPeriodo(){
   this.periodosService.actualizarPeriodoService(this.periodo).subscribe(resultado => {
     this.reset();
-
-    //Sentencia para habilitar el boton Agregar al hacer clic en el boton actualizar
-   $('#agregarPeriodo').attr('disabled', false);
-
-   //Sentencia para deshabilitar el boton Actualizar al hacer clic en el boton actualizar
-   $('#actualizarPeriodo').attr('disabled', true);
+    //valor para eleminar el boton actalizar del Dom
+    this.valor = false;
+    this.ngOnInit();
     },
     error => { console.log(JSON.stringify(error));
     });  
@@ -83,11 +80,8 @@ export class PeriodosComponent implements OnInit {
       this.periodo.FechaApertura = resultado[0].FechaApertura;
       this.periodo.FechaCierre = resultado[0].FechaCierre;
 
-   //Sentencia para deshabilitar el boton Agregar al hacer clic en el boton editar
-   $('#agregarPeriodo').attr('disabled', true);
-
-   //Sentencia para habilitar el boton Actualizar al hacer clic en el boton editar
-   $('#actualizarPeriodo').attr('disabled', false);
+      //valor para eleminar el boton agregar del Dom
+      this.valor = true;
 
     },
     error => { console.log(JSON.stringify(error));
@@ -99,6 +93,7 @@ export class PeriodosComponent implements OnInit {
 //Eliminar
 eliminarPeriodo(identificador){
   this.periodosService.eliminarPeriodoService(identificador).subscribe(resultado => {
+    this.ngOnInit();
   },
   error => { console.log(JSON.stringify(error));
   });
@@ -115,7 +110,5 @@ reset()
 
 }
 
-
-  
 
 }

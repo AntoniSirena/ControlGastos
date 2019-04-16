@@ -15,11 +15,11 @@ export class RazonesAnulacionTransaccionComponent implements OnInit {
 
   constructor(private httpClient: HttpClient, private razonesAnulacionTransaccionService: RazonesAnulacionTransaccionService) { }
 
-
   
   //Variable globales
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
+  valor: boolean = false;
 
   razones: any[] = [];
   razon: any = {Id:'', Codigo:'' ,Descripcion:''};
@@ -27,35 +27,33 @@ export class RazonesAnulacionTransaccionComponent implements OnInit {
  
 
   ngOnInit() {
-
-    
+  
     //Bloque para renderisar el DataTable en el html
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 8,
+      pageLength: 9,
       processing: true
     };
 
     this.razonesAnulacionTransaccionService.obtenerRazonesService().subscribe(data => {
       this.razones = data;
       this.dtTrigger.next();
+      this.ngOnDestroy();
     });
-    
-    //Sentencia para deshabilitar el boton actualizar cuando cargue el sistema
-    $('#actualizarRazon').attr('disabled', true);
 
   }
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
+    $('#datatable').dataTable().fnDestroy();
   }
-
 
   
  //Agregar
  agregarRazon(){ 
   this.razonesAnulacionTransaccionService.agregarRazonService(this.razon).subscribe(resultado => {
       this.reset();
+      this.ngOnInit();
       },       
       error => { console.log(JSON.stringify(error));
       });   
@@ -66,12 +64,9 @@ export class RazonesAnulacionTransaccionComponent implements OnInit {
  actualizarRazon(){
   this.razonesAnulacionTransaccionService.actualizarRazonService(this.razon).subscribe(resultado => {
     this.reset();
-
-    //Sentencia para habilitar el boton Agregar al hacer clic en el boton actualizar
-   $('#agregarRazon').attr('disabled', false);
-
-   //Sentencia para deshabilitar el boton Actualizar al hacer clic en el boton actualizar
-   $('#actualizarRazon').attr('disabled', true);
+    this.ngOnInit();
+    //valor para eleminar el boton actualizar del Dom
+    this.valor = false;
     },
     error => { console.log(JSON.stringify(error));
     });  
@@ -85,11 +80,8 @@ editarRazon(identificador){
     this.razon.Codigo = resultado[0].Codigo;
     this.razon.Descripcion = resultado[0].Descripcion;
 
- //Sentencia para deshabilitar el boton Agregar al hacer clic en el boton editar
- $('#agregarRazon').attr('disabled', true);
-
- //Sentencia para habilitar el boton Actualizar al hacer clic en el boton editar
- $('#actualizarRazon').attr('disabled', false);
+    //valor para eleminar el boton agregar del Dom
+    this.valor = true;
 
   },
   error => { console.log(JSON.stringify(error));
@@ -101,6 +93,7 @@ editarRazon(identificador){
   //Eliminar
 eliminarRazon(identificador){
   this.razonesAnulacionTransaccionService.eliminarRazonService(identificador).subscribe(resultado => {
+    this.ngOnInit();
   },
   error => { console.log(JSON.stringify(error));
   });
