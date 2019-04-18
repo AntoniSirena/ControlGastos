@@ -37,7 +37,8 @@ export class TransaccionComponent implements OnInit {
   gasto: any = {
   Id: '', 
   ConceptoId: '', 
-  SemanaId: '', AreaId: '',
+  SemanaId: '',
+  AreaId: '',
   Monto: '', 
   FechaCreacion: '', 
   Comentario: '', 
@@ -48,7 +49,8 @@ export class TransaccionComponent implements OnInit {
   ingreso: any = {
     Id: '', 
     ConceptoId: '', 
-    SemanaId: '', AreaId: '',
+    SemanaId: '', 
+    AreaId: '',
     Monto: '', 
     FechaCreacion: '', 
     Comentario: '', 

@@ -3,6 +3,8 @@ import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AnularTransaccionService } from 'src/app/servicios/anularTransaccion/anular-transaccion.service';
 
+declare var $;
+
 @Component({
   selector: 'app-anular-transaccion',
   templateUrl: './anular-transaccion.component.html',
@@ -21,8 +23,8 @@ export class AnularTransaccionComponent implements OnInit {
    transaccion: any[] = [];
    razonesAnulacion: any[] = [];
    objetoTrasaccion: any = {Id:'', RazonAnulacionId:''};
- 
- 
+   id: any = 0
+   checkConfirmar: boolean = false;
 
   ngOnInit() {
 
@@ -34,13 +36,16 @@ export class AnularTransaccionComponent implements OnInit {
       pageLength: 8,
       processing: true
     };
-
+    
+    this.obtenerTransaccionById(this.id);
     this.dtTrigger.next();
-
+    this.ngOnDestroy();
+    
   }
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
+    $('#datatable').dataTable().fnDestroy();
   }
 
   
@@ -68,7 +73,8 @@ export class AnularTransaccionComponent implements OnInit {
     anularTransaccion(){
       this.anularTransaccionService.anularTransaccionService(this.objetoTrasaccion).subscribe(resultado => {
         this.reset();
-  
+        this.checkConfirmar = false;
+        this.ngOnInit();
         },
         error => { console.log(JSON.stringify(error));
         });

@@ -1,0 +1,32 @@
+
+
+#tiposConceptosIngresos{
+    border-radius: 10px;
+}
+
+#tiposConceptosGastos{
+    border-radius: 10px;
+}
+
+#semana{
+    border-radius: 10px;
+}
+
+#area{
+    border-radius: 10px;
+}
+
+#monto{
+    border-radius: 10px;
+}
+
+#fechaCreacion{
+    border-radius: 10px;
+}
+
+
+#gastos{
+    text-align: center;
+    font-weight:bold;
+    color: red;
+}

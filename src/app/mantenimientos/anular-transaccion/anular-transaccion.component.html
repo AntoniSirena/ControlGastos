@@ -69,7 +69,7 @@
      <th><button (click)="anularTransaccion()" class="btn btn-danger"  id="anularTransaccion" [disabled] ="!checkConfirmar">Anular</button></th>
      <td style="font-weight: bold">{{trans.Id}}</td>
      <td style="font-weight: bold">{{trans.Origen}}</td>
-     <td style="font-weight: bold">{{trans.Periodos.Descripcion +' '+ "(desde" +' '+ trans.Periodos.FechaApertura +' '+ "hasta" +' '+ trans.Periodos.FechaCierre +')'+' '+ trans.Periodos.Statuses.Descripcion}}</td>
+     <td style="font-weight: bold" [ngStyle]="{'color':trans.Periodos.Statuses.Descripcion ==='Cerrado' ? 'firebrick' : 'olivedrab'}">{{trans.Periodos.Descripcion +' '+ "(desde" +' '+ trans.Periodos.FechaApertura +' '+ "hasta" +' '+ trans.Periodos.FechaCierre +')'+' '+ trans.Periodos.Statuses.Descripcion}}</td>
      <td>{{trans.Semanas.Descripcion}}</td>
      <td>{{trans.Areas.Descripcion}}</td>
      <td>{{trans.TiposConceptos.Descripcion}}</td>
