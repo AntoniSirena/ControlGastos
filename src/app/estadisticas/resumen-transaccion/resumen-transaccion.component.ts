@@ -18,7 +18,7 @@ export class ResumenTransaccionComponent implements OnInit {
   //Variables
   semanas: any = [];
   areas: any= [];
-  períodos: any= [];
+  periodos: any= [];
 
   tiposConceptos: any = [];
   tiposConceptosGastos: any = [];
@@ -27,12 +27,12 @@ export class ResumenTransaccionComponent implements OnInit {
   resumenIngresos: any = [];
   resumenGastos: any= [];
 
-  resumen: any = { FechaInicial: '', FechaFinal: '', ConceptoId: '', PeriodoId: '', SemanaId: '', AreaId: ''};
+  filtroResumenTransacciones: any = { FechaInicial: '', FechaFinal: '', ConceptoId: '', PeriodoId: '', SemanaId: '', AreaId: ''};
 
   ngOnInit() {
 
-    this.obtenerResumenIngresos(this.resumen);
-    this.obtenerResumenGastos(this.resumen);
+    this.obtenerResumenIngresos();
+    this.obtenerResumenGastos();
 
     this.obtenerTiposConceptos();
     this.obtenerPeríodos();
@@ -73,7 +73,7 @@ export class ResumenTransaccionComponent implements OnInit {
       //Períodos
       obtenerPeríodos(){ 
         this.resumenTransaccionService.obtenerPeriodoService().subscribe(resultado => {
-              this.períodos = resultado;
+              this.periodos = resultado;
             },       
             error => { console.log(JSON.stringify(error));
             });   
@@ -98,16 +98,16 @@ export class ResumenTransaccionComponent implements OnInit {
               });   
           }
 
-          obtenerResumenIngresos(resumen){ 
-            this.resumenTransaccionService.obtenerResumenIngresoService(resumen).subscribe(resultado => {
+          obtenerResumenIngresos(){ 
+            this.resumenTransaccionService.obtenerResumenIngresoService(this.filtroResumenTransacciones).subscribe(resultado => {
                   this.resumenIngresos = resultado;
                 },       
                 error => { console.log(JSON.stringify(error));
                 });   
             }
 
-            obtenerResumenGastos(resumen){ 
-              this.resumenTransaccionService.obtenerResumenGastoService(resumen).subscribe(resultado => {
+            obtenerResumenGastos(){
+              this.resumenTransaccionService.obtenerResumenGastoService(this.filtroResumenTransacciones).subscribe(resultado => {
                     this.resumenGastos = resultado;
                   },       
                   error => { console.log(JSON.stringify(error));

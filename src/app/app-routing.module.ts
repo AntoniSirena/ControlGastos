@@ -233,7 +233,7 @@ const routes: Routes = [
         path: 'resumen-transaccion',
         component: ResumenTransaccionComponent,
         data: {
-          title: 'Resumen de Ingresos y Gastos',
+          title: 'Resumen',
         }
       }
 

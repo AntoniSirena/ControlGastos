@@ -32,14 +32,14 @@ export class ResumenTransaccionService {
     return this.httpClient.get(`${this.url.url}Api/Transaccion/GetAreas`);   
   }
 
-  obtenerResumenIngresoService(resumen: any):Observable<any> {
-    let Json = JSON.stringify(resumen);
+  obtenerResumenIngresoService(filtroResumenTransacciones: any):Observable<any> {
+    let Json = JSON.stringify(filtroResumenTransacciones);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.httpClient.post(`${this.url.url}Api/Transaccion/GetResumenIngresos`, Json, {headers: headers} );
   }
 
-  obtenerResumenGastoService(resumen: any):Observable<any> {
-    let Json = JSON.stringify(resumen);
+  obtenerResumenGastoService(filtroResumenTransacciones: any):Observable<any> {
+    let Json = JSON.stringify(filtroResumenTransacciones);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.httpClient.post(`${this.url.url}Api/Transaccion/GetResumenGastos`, Json, {headers: headers} );
   }

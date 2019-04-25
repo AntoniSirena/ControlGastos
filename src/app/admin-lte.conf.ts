@@ -53,7 +53,7 @@ export const adminLteConf = {
     //Estadisticas
     {label: 'Estadísticas', iconClasses: 'fa fa-pie-chart', 
     children: [
-        {label: 'Resumen de Ingresos/Gastos', route: 'estadisticas/resumen-transaccion'}  
+        {label: 'Resumen', route: 'estadisticas/resumen-transaccion'}  
     ]}
 
     

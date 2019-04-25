@@ -1,5 +1,4 @@
 
-
 #tiposConceptosIngresos{
     border-radius: 10px;
 }
@@ -8,7 +7,12 @@
     border-radius: 10px;
 }
 
+
 #semana{
+    border-radius: 10px;
+}
+
+#periodo{
     border-radius: 10px;
 }
 
@@ -16,11 +20,12 @@
     border-radius: 10px;
 }
 
-#monto{
+
+#fechaInicial{
     border-radius: 10px;
 }
 
-#fechaCreacion{
+#fechaFinal{
     border-radius: 10px;
 }
 
