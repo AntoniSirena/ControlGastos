@@ -30,15 +30,15 @@
           <tr *ngFor="let gasto of gastos">
             <td style="font-weight: bold">{{gasto.Id}}</td>
             <td style="font-weight: bold">{{gasto.Origen}}</td>
-            <td style="font-weight: bold" [ngStyle]="{'color':gasto.Periodos.Statuses.Descripcion ==='Cerrado' ? 'rgb(87, 160, 233)' : 'rgb(83, 145, 93)'}">{{gasto.Periodos.Descripcion +' '+ "/ desde" +' '+ gasto.Periodos.FechaApertura +' '+ "hasta" +' '+ gasto.Periodos.FechaCierre +' /'+' '+ gasto.Periodos.Statuses.Descripcion}}</td>
+            <td style="font-weight: bold" [ngStyle]="{'color':gasto.Periodos.Statuses.Descripcion ==='Cerrado' ? 'rgb(87, 160, 233)' : 'rgb(83, 145, 93)'}">{{gasto.Periodos.Descripcion}} / desde {{gasto.Periodos.FechaApertura | date:'dd-MM-yyyy'}} hasta {{gasto.Periodos.FechaCierre | date:'dd-MM-yyyy'}} / {{gasto.Periodos.Statuses.Descripcion}}</td>
             <td>{{gasto.Semanas.Descripcion}}</td>
             <td>{{gasto.Areas.Descripcion}}</td>
             <td>{{gasto.TiposConceptos.Descripcion}}</td>
             <td style="font-weight: bold">{{gasto.Monto | number}}</td>
             <td>{{gasto.Referencia}}</td>
-            <td>{{gasto.FechaCreacion}}</td>
-            <td>{{gasto.FechaRegistro}}</td>
-            <td>{{gasto.FechaAnulacion}}</td>
+            <td>{{gasto.FechaCreacion | date:'dd-MM-yyyy'}}</td>
+            <td>{{gasto.FechaRegistro | date:'dd-MM-yyyy HH:mm'}}</td>
+            <td>{{gasto.FechaAnulacion | date:'dd-MM-yyyy HH:mm'}}</td>
             <td>{{gasto.Comentario}}</td>
             <td>{{gasto.RazonesAnulacionTransaccion.Descripcion}}</td>
           </tr>
@@ -78,15 +78,15 @@
           <tr *ngFor="let ingreso of ingresos">
             <td style="font-weight: bold">{{ingreso.Id}}</td>
             <td style="font-weight: bold">{{ingreso.Origen}}</td>
-            <td style="font-weight: bold" [ngStyle]="{'color':ingreso.Periodos.Statuses.Descripcion ==='Cerrado' ? 'rgb(87, 160, 233)' : 'rgb(83, 145, 93)'}">{{ingreso.Periodos.Descripcion +' '+ "/ desde" +' '+ ingreso.Periodos.FechaApertura +' '+ "hasta" +' '+ ingreso.Periodos.FechaCierre +' /'+' '+ ingreso.Periodos.Statuses.Descripcion}}</td>
+            <td style="font-weight: bold" [ngStyle]="{'color':ingreso.Periodos.Statuses.Descripcion ==='Cerrado' ? 'rgb(87, 160, 233)' : 'rgb(83, 145, 93)'}">{{ingreso.Periodos.Descripcion}} / desde {{ingreso.Periodos.FechaApertura | date:'dd-MM-yyyy'}} hasta {{ingreso.Periodos.FechaCierre | date:'dd-MM-yyyy'}} / {{ingreso.Periodos.Statuses.Descripcion}}</td>
             <td>{{ingreso.Semanas.Descripcion}}</td>
             <td>{{ingreso.Areas.Descripcion}}</td>
             <td>{{ingreso.TiposConceptos.Descripcion}}</td>
             <td style="font-weight: bold">{{ingreso.Monto | number}}</td>
             <td>{{ingreso.Referencia}}</td>
-            <td>{{ingreso.FechaCreacion}}</td>
-            <td>{{ingreso.FechaRegistro}}</td>
-            <td>{{ingreso.FechaAnulacion}}</td>
+            <td>{{ingreso.FechaCreacion | date:'dd-MM-yyyy'}}</td>
+            <td>{{ingreso.FechaRegistro | date:'dd-MM-yyyy HH:mm'}}</td>
+            <td>{{ingreso.FechaAnulacion | date:'dd-MM-yyyy HH:mm'}}</td>
             <td>{{ingreso.Comentario}}</td>
             <td>{{ingreso.RazonesAnulacionTransaccion.Descripcion}}</td>
           </tr>

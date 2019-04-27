@@ -69,14 +69,14 @@
      <th><button (click)="anularTransaccion()" class="btn btn-danger"  id="anularTransaccion" [disabled] ="!checkConfirmar">Anular</button></th>
      <td style="font-weight: bold">{{trans.Id}}</td>
      <td style="font-weight: bold">{{trans.Origen}}</td>
-     <td style="font-weight: bold" [ngStyle]="{'color':trans.Periodos.Statuses.Descripcion ==='Cerrado' ? 'firebrick' : 'olivedrab'}">{{trans.Periodos.Descripcion +' '+ "(desde" +' '+ trans.Periodos.FechaApertura +' '+ "hasta" +' '+ trans.Periodos.FechaCierre +')'+' '+ trans.Periodos.Statuses.Descripcion}}</td>
+     <td style="font-weight: bold" [ngStyle]="{'color':trans.Periodos.Statuses.Descripcion ==='Cerrado' ? 'firebrick' : 'olivedrab'}">{{trans.Periodos.Descripcion}} / desde {{trans.Periodos.FechaApertura | date:'dd-MM-yyyy'}} hasta {{trans.Periodos.FechaCierre | date:'dd-MM-yyyy'}} / {{trans.Periodos.Statuses.Descripcion}}</td>
      <td>{{trans.Semanas.Descripcion}}</td>
      <td>{{trans.Areas.Descripcion}}</td>
      <td>{{trans.TiposConceptos.Descripcion}}</td>
      <td style="font-weight: bold">{{trans.Monto | number}}</td>
      <td>{{trans.Referencia}}</td>
-     <td>{{trans.FechaCreacion}}</td>
-     <td>{{trans.FechaRegistro}}</td>
+     <td>{{trans.FechaCreacion | date:'dd-MM-yyyy'}}</td>
+     <td>{{trans.FechaRegistro | date:'dd-MM-yyyy HH:mm'}}</td>
      <td>{{trans.Comentario}}</td>
    </tr>
  </tbody>
