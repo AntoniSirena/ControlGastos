@@ -46,7 +46,7 @@ export class TiposConceptosComponent implements OnInit, OnDestroy  {
     //Bloque para renderisar el DataTable en el html
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 8,
+      pageLength: 20,
       processing: true
     };
 

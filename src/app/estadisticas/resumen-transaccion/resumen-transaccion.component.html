@@ -1,8 +1,86 @@
 
 <div id="formulario" class="container-fluid">
     
+        <!--Componente tipo acordion Estado de Resultado -->
+        <br>
+        <mk-box header="Estado de Resultado" [isCollapsable]="true" [isRemovable]="false" contentClasses="table-responsive">
+    
+            <!--Filtros -->
+            <br>
+            <div class="row">
+              <div class="col-xs-10 col-sm-10 col-md-10">
+    
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                            <div class="form-group">
+                                <label for="controlFechaInicial">Fecha inicial</label>
+                                <input type="date" 
+                                [(ngModel)]="filtroEstadoResultados.FechaInicial" 
+                                class="form-control" 
+                                id="fechaInicial" >
+                            </div>
+                        </div>
+    
+                        <div class="col-xs-2 col-sm-2 col-md-2">
+                            <div class="form-group">
+                                <label for="controlFechaFinal">Fecha final</label>
+                                <input type="date" 
+                                [(ngModel)]="filtroEstadoResultados.FechaFinal" 
+                                class="form-control" 
+                                id="fechaFinal" >
+                            </div>
+                        </div>
+                          
+                          <div class="col-xs-2 col-sm-2 col-md-2">
+                                <div class="form-group">
+                                    <label for="controlPeriodo">Período</label>
+                                    <select class="form-control" id="periodo" [(ngModel)]="filtroEstadoResultados.PeriodoId">
+                                        <option *ngFor="let item of periodos" [value]="item.Id">{{item.Descripcion}}</option>
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <div class="col-xs-2 col-sm-2 col-md-2">
+                                    <div class="form-group">
+                                        <label for="controlSemana">Semana</label>
+                                        <select class="form-control" id="semana" [(ngModel)]="filtroEstadoResultados.SemanaId">
+                                            <option *ngFor="let item of semanas" [value]="item.Id">{{item.Descripcion}}</option>
+                                        </select>
+                                    </div>
+                            </div>
+    
+                            <div class="col-xs-2 col-sm-2 col-md-2">
+                                    <div class="form-group">
+                                        <label for="controlArea">Area</label>
+                                        <select class="form-control" id="area" [(ngModel)]="filtroEstadoResultados.AreaId">
+                                            <option *ngFor="let item of areas" [value]="item.Id">{{item.Descripcion}}</option>
+                                        </select>
+                                    </div>
+                            </div>
+                  </div>
+                  
+            </div>
+            <!--Boton buscar -->
+            <div class="row">
+                  <div class="col-xs-8 col-sm-4 col-md-4">
+                              <div class="col-xs-4 col-sm-2 col-md-2">
+                                <button (click)="obtenerEstadoResultados()"
+                                class="btn btn-primary" 
+                                id="Buscar" >Buscar</button>
+                              </div>
+                      </div>
+            </div>
+    
+            <div *ngFor="let item of estadoResultados" id="resultado">
+            <span class="pading">Ingresos : {{item.Ingresos | number}}</span>
+            <span class="pading">Gastos : {{item.Gastos | number}}</span>
+            <span class="pading" [ngStyle]="{'color': item.Diferencia > '0' ? 'blue' : 'red'}">Beneficio : {{item.Diferencia | number}}</span>
+            </div>
+    
+        </mk-box>
+        <!--Fin del componente -->
+    
+        
     <!--Componente tipo acordion ingresos -->
-    <br>
     <br>
     <mk-box header="Ingresos" [isCollapsable]="true" [isRemovable]="false" contentClasses="table-responsive">
 
@@ -15,7 +93,7 @@
                         <div class="form-group">
                             <label for="controlFechaInicial">Fecha inicial</label>
                             <input type="date" 
-                            [(ngModel)]="filtroResumenTransacciones.FechaInicial" 
+                            [(ngModel)]="filtroResumenTransaccionesIngresos.FechaInicial" 
                             class="form-control" 
                             id="fechaInicial" >
                         </div>
@@ -25,7 +103,7 @@
                         <div class="form-group">
                             <label for="controlFechaFinal">Fecha final</label>
                             <input type="date" 
-                            [(ngModel)]="filtroResumenTransacciones.FechaFinal" 
+                            [(ngModel)]="filtroResumenTransaccionesIngresos.FechaFinal" 
                             class="form-control" 
                             id="fechaFinal" >
                         </div>
@@ -34,7 +112,7 @@
                       <div class="col-xs-2 col-sm-2 col-md-2">
                           <div class="form-group">
                               <label for="controlTiposConceptos">Concepto</label>
-                              <select class="form-control" id="tiposConceptosIngresos" [(ngModel)]="filtroResumenTransacciones.ConceptoId">
+                              <select class="form-control" id="tiposConceptosIngresos" [(ngModel)]="filtroResumenTransaccionesIngresos.ConceptoId">
                                   <option *ngFor="let item of tiposConceptosIngresos" [value]="item.Id">{{item.Descripcion}}</option>
                               </select>
                           </div>
@@ -43,7 +121,7 @@
                       <div class="col-xs-2 col-sm-2 col-md-2">
                             <div class="form-group">
                                 <label for="controlPeriodo">Período</label>
-                                <select class="form-control" id="periodo" [(ngModel)]="filtroResumenTransacciones.PeriodoId">
+                                <select class="form-control" id="periodo" [(ngModel)]="filtroResumenTransaccionesIngresos.PeriodoId">
                                     <option *ngFor="let item of periodos" [value]="item.Id">{{item.Descripcion}}</option>
                                 </select>
                             </div>
@@ -52,7 +130,7 @@
                         <div class="col-xs-2 col-sm-2 col-md-2">
                                 <div class="form-group">
                                     <label for="controlSemana">Semana</label>
-                                    <select class="form-control" id="semana" [(ngModel)]="filtroResumenTransacciones.SemanaId">
+                                    <select class="form-control" id="semana" [(ngModel)]="filtroResumenTransaccionesIngresos.SemanaId">
                                         <option *ngFor="let item of semanas" [value]="item.Id">{{item.Descripcion}}</option>
                                     </select>
                                 </div>
@@ -61,7 +139,7 @@
                         <div class="col-xs-2 col-sm-2 col-md-2">
                                 <div class="form-group">
                                     <label for="controlArea">Area</label>
-                                    <select class="form-control" id="area" [(ngModel)]="filtroResumenTransacciones.AreaId">
+                                    <select class="form-control" id="area" [(ngModel)]="filtroResumenTransaccionesIngresos.AreaId">
                                         <option *ngFor="let item of areas" [value]="item.Id">{{item.Descripcion}}</option>
                                     </select>
                                 </div>
@@ -114,7 +192,7 @@
                         <div class="form-group">
                             <label for="controlFechaInicial">Fecha inicial</label>
                             <input type="date" 
-                            [(ngModel)]="filtroResumenTransacciones.FechaInicial" 
+                            [(ngModel)]="filtroResumenTransaccionesGastos.FechaInicial" 
                             class="form-control" 
                             id="fechaInicial" >
                         </div>
@@ -124,7 +202,7 @@
                         <div class="form-group">
                             <label for="controlFechaFinal">Fecha final</label>
                             <input type="date" 
-                            [(ngModel)]="filtroResumenTransacciones.FechaFinal" 
+                            [(ngModel)]="filtroResumenTransaccionesGastos.FechaFinal" 
                             class="form-control" 
                             id="fechaFinal" >
                         </div>
@@ -133,7 +211,7 @@
                       <div class="col-xs-2 col-sm-2 col-md-2">
                           <div class="form-group">
                               <label for="controlTiposConceptos">Concepto</label>
-                              <select class="form-control" id="tiposConceptosGastos" [(ngModel)]="filtroResumenTransacciones.ConceptoId">
+                              <select class="form-control" id="tiposConceptosGastos" [(ngModel)]="filtroResumenTransaccionesGastos.ConceptoId">
                                   <option *ngFor="let item of tiposConceptosGastos" [value]="item.Id">{{item.Descripcion}}</option>
                               </select>
                           </div>
@@ -142,7 +220,7 @@
                       <div class="col-xs-2 col-sm-2 col-md-2">
                             <div class="form-group">
                                 <label for="controlPeriodo">Período</label>
-                                <select class="form-control" id="periodo" [(ngModel)]="filtroResumenTransacciones.PeriodoId">
+                                <select class="form-control" id="periodo" [(ngModel)]="filtroResumenTransaccionesGastos.PeriodoId">
                                     <option *ngFor="let item of periodos" [value]="item.Id">{{item.Descripcion}}</option>
                                 </select>
                             </div>
@@ -151,7 +229,7 @@
                         <div class="col-xs-2 col-sm-2 col-md-2">
                                 <div class="form-group">
                                     <label for="controlSemana">Semana</label>
-                                    <select class="form-control" id="semana" [(ngModel)]="filtroResumenTransacciones.SemanaId">
+                                    <select class="form-control" id="semana" [(ngModel)]="filtroResumenTransaccionesGastos.SemanaId">
                                         <option *ngFor="let item of semanas" [value]="item.Id">{{item.Descripcion}}</option>
                                     </select>
                                 </div>
@@ -160,7 +238,7 @@
                         <div class="col-xs-2 col-sm-2 col-md-2">
                                 <div class="form-group">
                                     <label for="controlArea">Area</label>
-                                    <select class="form-control" id="area" [(ngModel)]="filtroResumenTransacciones.AreaId">
+                                    <select class="form-control" id="area" [(ngModel)]="filtroResumenTransaccionesGastos.AreaId">
                                         <option *ngFor="let item of areas" [value]="item.Id">{{item.Descripcion}}</option>
                                     </select>
                                 </div>

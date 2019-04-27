@@ -44,5 +44,11 @@ export class ResumenTransaccionService {
     return this.httpClient.post(`${this.url.url}Api/Transaccion/GetResumenGastos`, Json, {headers: headers} );
   }
 
+  obtenerEstadoResultadotoService(filtroResumenTransacciones: any):Observable<any> {
+    let Json = JSON.stringify(filtroResumenTransacciones);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.httpClient.post(`${this.url.url}Api/Transaccion/GetEstadoResultado`, Json, {headers: headers} );
+  }
+
 }
 

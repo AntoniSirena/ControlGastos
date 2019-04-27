@@ -26,34 +26,37 @@ export class ResumenTransaccionComponent implements OnInit {
 
   resumenIngresos: any = [];
   resumenGastos: any= [];
+  estadoResultados: any= [];
 
-  filtroResumenTransacciones: any = { FechaInicial: '', FechaFinal: '', ConceptoId: '', PeriodoId: '', SemanaId: '', AreaId: ''};
+  filtroResumenTransaccionesIngresos: any = { FechaInicial: '', FechaFinal: '', ConceptoId: '', PeriodoId: '', SemanaId: '', AreaId: ''};
+  filtroResumenTransaccionesGastos: any = { FechaInicial: '', FechaFinal: '', ConceptoId: '', PeriodoId: '', SemanaId: '', AreaId: ''};
+  filtroEstadoResultados: any = { FechaInicial: '', FechaFinal: '', ConceptoId: '', PeriodoId: '', SemanaId: '', AreaId: ''};
+
 
   ngOnInit() {
 
     this.obtenerResumenIngresos();
     this.obtenerResumenGastos();
+    this.obtenerEstadoResultados();
 
     this.obtenerTiposConceptos();
     this.obtenerPeríodos();
     this.obtenerSemans();
     this.obtenerAreas();
 
-    
   }
-
 
 
      //Metodo para obtener los Tipos de Conceptos
      obtenerTiposConceptos(){ 
       this.resumenTransaccionService.obtenerTiposConceptoService().subscribe(resultado => {
             this.tiposConceptos = resultado;
-            this.asignarTiposConceptos();
-         
+            this.asignarTiposConceptos();        
           },       
-          error => { console.log(JSON.stringify(error));
-          });   
+        error => { console.log(JSON.stringify(error));
+         });   
       }
+  
 
       //Metodo para segmentar los tipos de conceptos según su origen
       asignarTiposConceptos(){
@@ -99,7 +102,7 @@ export class ResumenTransaccionComponent implements OnInit {
           }
 
           obtenerResumenIngresos(){ 
-            this.resumenTransaccionService.obtenerResumenIngresoService(this.filtroResumenTransacciones).subscribe(resultado => {
+            this.resumenTransaccionService.obtenerResumenIngresoService(this.filtroResumenTransaccionesIngresos).subscribe(resultado => {
                   this.resumenIngresos = resultado;
                 },       
                 error => { console.log(JSON.stringify(error));
@@ -107,11 +110,19 @@ export class ResumenTransaccionComponent implements OnInit {
             }
 
             obtenerResumenGastos(){
-              this.resumenTransaccionService.obtenerResumenGastoService(this.filtroResumenTransacciones).subscribe(resultado => {
+              this.resumenTransaccionService.obtenerResumenGastoService(this.filtroResumenTransaccionesGastos).subscribe(resultado => {
                     this.resumenGastos = resultado;
                   },       
                   error => { console.log(JSON.stringify(error));
                   });   
               }
+
+              obtenerEstadoResultados(){
+                this.resumenTransaccionService.obtenerEstadoResultadotoService(this.filtroEstadoResultados).subscribe(resultado => {
+                      this.estadoResultados = resultado;
+                    },       
+                    error => { console.log(JSON.stringify(error));
+                    });   
+                }
 
 }

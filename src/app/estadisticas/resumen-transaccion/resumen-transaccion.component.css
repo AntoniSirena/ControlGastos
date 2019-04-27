@@ -35,3 +35,16 @@
     font-weight:bold;
     color: red;
 }
+
+#resultado{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.3pc;
+}
+
+.pading{
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgb(183, 233, 229);
+    color: black;
+}

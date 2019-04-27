@@ -30,7 +30,7 @@
           <tr *ngFor="let gasto of gastos">
             <td style="font-weight: bold">{{gasto.Id}}</td>
             <td style="font-weight: bold">{{gasto.Origen}}</td>
-            <td style="font-weight: bold" [ngStyle]="{'color':gasto.Periodos.Statuses.Descripcion ==='Cerrado' ? 'firebrick' : 'olivedrab'}">{{gasto.Periodos.Descripcion +' '+ "(desde" +' '+ gasto.Periodos.FechaApertura +' '+ "hasta" +' '+ gasto.Periodos.FechaCierre +')'+' '+ gasto.Periodos.Statuses.Descripcion}}</td>
+            <td style="font-weight: bold" [ngStyle]="{'color':gasto.Periodos.Statuses.Descripcion ==='Cerrado' ? 'rgb(87, 160, 233)' : 'rgb(83, 145, 93)'}">{{gasto.Periodos.Descripcion +' '+ "/ desde" +' '+ gasto.Periodos.FechaApertura +' '+ "hasta" +' '+ gasto.Periodos.FechaCierre +' /'+' '+ gasto.Periodos.Statuses.Descripcion}}</td>
             <td>{{gasto.Semanas.Descripcion}}</td>
             <td>{{gasto.Areas.Descripcion}}</td>
             <td>{{gasto.TiposConceptos.Descripcion}}</td>
@@ -78,7 +78,7 @@
           <tr *ngFor="let ingreso of ingresos">
             <td style="font-weight: bold">{{ingreso.Id}}</td>
             <td style="font-weight: bold">{{ingreso.Origen}}</td>
-            <td style="font-weight: bold" [ngStyle]="{'color':ingreso.Periodos.Statuses.Descripcion ==='Cerrado' ? 'firebrick' : 'olivedrab'}">{{ingreso.Periodos.Descripcion +' '+ "(desde" +' '+ ingreso.Periodos.FechaApertura +' '+ "hasta" +' '+ ingreso.Periodos.FechaCierre +')'+' '+ ingreso.Periodos.Statuses.Descripcion}}</td>
+            <td style="font-weight: bold" [ngStyle]="{'color':ingreso.Periodos.Statuses.Descripcion ==='Cerrado' ? 'rgb(87, 160, 233)' : 'rgb(83, 145, 93)'}">{{ingreso.Periodos.Descripcion +' '+ "/ desde" +' '+ ingreso.Periodos.FechaApertura +' '+ "hasta" +' '+ ingreso.Periodos.FechaCierre +' /'+' '+ ingreso.Periodos.Statuses.Descripcion}}</td>
             <td>{{ingreso.Semanas.Descripcion}}</td>
             <td>{{ingreso.Areas.Descripcion}}</td>
             <td>{{ingreso.TiposConceptos.Descripcion}}</td>
