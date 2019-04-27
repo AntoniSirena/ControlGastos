@@ -83,7 +83,7 @@
 <thead>
   <tr>
     <th>Editar</th>
-    <th>Eliminar</th>
+    <th>Eliminar <input type="checkbox" [(ngModel)]="check"> </th>
     <th>Persona</th>
     <th>Usuario</th>
     <th>Email</th>
@@ -92,7 +92,7 @@
 <tbody>
   <tr *ngFor="let item of users; let i = index">
     <td> <button id="editar" (click)="editarUser(item.Id)" class="btn btn-primary">Edit</button> </td>
-    <td> <button id="Eliminar" (click)="eliminarUser(item.Id)" class="btn btn-danger" [disabled]="!check">Elim</button> <input type="checkbox" [(ngModel)]="check">  </td>
+    <td> <button id="Eliminar" (click)="eliminarUser(item.Id)" class="btn btn-danger" [disabled]="!check">Elim</button>  </td>
     <td>{{ item.Personas.NombreCompleto}}</td>
     <td>{{ item.NombreUsuario }}</td>
     <td>{{ item.Email}}</td>

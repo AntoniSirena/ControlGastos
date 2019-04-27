@@ -77,7 +77,7 @@
       <thead>
       <tr>
       <th>Editar</th>
-      <th>Eliminar</th>
+      <th>Eliminar <input type="checkbox" [(ngModel)]="checkGasto"> </th>
       <th>Codigo</th>
       <th>Descripcion</th>
       <th>Tipo</th>
@@ -86,7 +86,7 @@
       <tbody>
       <tr *ngFor="let tiposConcepto of tiposConceptosGastos">
       <td> <button id="editar" (click)="editarTipoConceptoGasto(tiposConcepto.Id)" class="btn btn-primary">Edit</button> </td>
-      <td> <button id="Eliminar" (click)="eliminarTipoConcepto(tiposConcepto.Id)" class="btn btn-danger">Elim</button> </td>
+      <td> <button id="Eliminar" (click)="eliminarTipoConcepto(tiposConcepto.Id)" class="btn btn-danger" [disabled]="!checkGasto">Elim</button> </td>
       <td>{{ tiposConcepto.Codigo }}</td>
       <td>{{ tiposConcepto.Descripcion }}</td>
       <td>{{ tiposConcepto.TiposGastos.Descripcion }}</td>
@@ -173,7 +173,7 @@
           <thead>
           <tr>
           <th>Editar</th>
-          <th>Eliminar</th>
+          <th>Eliminar <input type="checkbox" [(ngModel)]="checkIngreso"> </th>
           <th>Codigo</th>
           <th>Descripcion</th>
           <th>Tipo</th>
@@ -182,7 +182,7 @@
           <tbody>
           <tr *ngFor="let item of tiposConceptosIngresos">
           <td> <button id="editar" (click)="editarTipoConceptoIngreso(item.Id)" class="btn btn-primary">Edit</button> </td>
-          <td> <button id="Eliminar" (click)="eliminarTipoConcepto(item.Id)" class="btn btn-danger">Elim</button> </td>
+          <td> <button id="Eliminar" (click)="eliminarTipoConcepto(item.Id)" class="btn btn-danger" [disabled]="!checkIngreso">Elim</button> </td>
           <td>{{ item.Codigo }}</td>
           <td>{{ item.Descripcion }}</td>
           <td>{{ item.TipoIngresos.Descripcion }}</td>

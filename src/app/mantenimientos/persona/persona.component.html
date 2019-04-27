@@ -137,7 +137,7 @@
 <thead>
   <tr>
     <th>Editar</th>
-    <th>Eliminar</th>
+    <th>Eliminar <input type="checkbox" [(ngModel)]="check"> </th>
     <th>PrimerNombre</th>
     <th>SegundoNombre</th>
     <th>PrimerApellido</th>
@@ -151,7 +151,7 @@
 <tbody>
   <tr *ngFor="let persona of personas">
     <td> <button id="editar" (click)="editarPersona(persona.Id)" class="btn btn-primary">Edit</button> </td>
-    <td> <button id="Eliminar" (click)="eliminarPersona(persona.Id)" class="btn btn-danger">Elim</button> </td>
+    <td> <button id="Eliminar" (click)="eliminarPersona(persona.Id)" class="btn btn-danger" [disabled]="!check" >Elim</button> </td>
     <td>{{persona.PrimerNombre}}</td>
     <td>{{persona.SegundoNombre}}</td>
     <td>{{persona.PrimerApellido}}</td>

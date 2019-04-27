@@ -89,7 +89,7 @@
 <thead>
   <tr>
     <th>Editar</th>
-    <th>Eliminar</th>
+    <th>Eliminar <input type="checkbox" [(ngModel)]="check"> </th>
     <th>Codigo</th>
     <th>Descripcion</th>
     <th>Fecha de apertura</th>
@@ -100,7 +100,7 @@
 <tbody>
   <tr *ngFor="let periodo of periodos">
     <td> <button id="editar" (click)="editarPeriodo(periodo.Id)" class="btn btn-primary">Edit</button> </td>
-    <td> <button id="Eliminar" (click)="eliminarPeriodo(periodo.Id)" class="btn btn-danger">Elim</button> </td>
+    <td> <button id="Eliminar" (click)="eliminarPeriodo(periodo.Id)" class="btn btn-danger" [disabled]="!check" >Elim</button> </td>
     <td>{{ periodo.Codigo }}</td>
     <td>{{ periodo.Descripcion }}</td>
     <td>{{ periodo.FechaApertura | date}}</td>
