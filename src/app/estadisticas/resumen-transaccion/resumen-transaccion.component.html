@@ -73,7 +73,7 @@
             <div *ngFor="let item of estadoResultados" id="resultado">
             <span class="pading">Ingresos : {{item.Ingresos | number}}</span>
             <span class="pading">Gastos : {{item.Gastos | number}}</span>
-            <span class="pading" [ngStyle]="{'color': item.Diferencia > '0' ? 'blue' : 'red'}">Beneficio : {{item.Diferencia | number}}</span>
+            <span class="pading" [ngStyle]="{'color': item.Diferencia >= '0' ? 'blue' : 'red'}">Beneficio : {{item.Diferencia | number}}</span>
             </div>
     
         </mk-box>
