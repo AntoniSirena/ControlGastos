@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ResumenTransaccionService } from 'src/app/servicios/resumentransaccion/resumen-transaccion.service';
+import { element } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-resumen-transaccion',
@@ -32,9 +33,11 @@ export class ResumenTransaccionComponent implements OnInit {
   filtroResumenTransaccionesGastos: any = { FechaInicial: '', FechaFinal: '', ConceptoId: '', PeriodoId: '', SemanaId: '', AreaId: ''};
   filtroEstadoResultados: any = { FechaInicial: '', FechaFinal: '', ConceptoId: '', PeriodoId: '', SemanaId: '', AreaId: ''};
 
+  sumaIngreso: Number = 0;
+  sumaGasto: Number = 0;
+  
 
   ngOnInit() {
-
     this.obtenerResumenIngresos();
     this.obtenerResumenGastos();
     this.obtenerEstadoResultados();
@@ -72,6 +75,20 @@ export class ResumenTransaccionComponent implements OnInit {
     
         }
 
+        //Metodo para obtener el monto total de ingreso
+        obtenerSumaIngreso(){
+        this.resumenIngresos.forEach(element =>{
+          this.sumaIngreso += element.Monto;
+        });
+        }
+
+        //Metodo para obtener el monto total de gasto
+        obtenerSumaGasto(){
+          this.resumenGastos.forEach(element =>{
+            this.sumaGasto += element.Monto;
+          });
+          }
+
 
       //Períodos
       obtenerPeríodos(){ 
@@ -101,22 +118,29 @@ export class ResumenTransaccionComponent implements OnInit {
               });   
           }
 
+         //Metodo para obtener los ingresos
           obtenerResumenIngresos(){ 
             this.resumenTransaccionService.obtenerResumenIngresoService(this.filtroResumenTransaccionesIngresos).subscribe(resultado => {
                   this.resumenIngresos = resultado;
+                  this.sumaIngreso = 0; //reseteo la variable
+                  this.obtenerSumaIngreso();
                 },       
                 error => { console.log(JSON.stringify(error));
                 });   
             }
 
+            //Metodo para obtener los gastos
             obtenerResumenGastos(){
               this.resumenTransaccionService.obtenerResumenGastoService(this.filtroResumenTransaccionesGastos).subscribe(resultado => {
                     this.resumenGastos = resultado;
+                    this.sumaGasto = 0; //reseteo la variable
+                    this.obtenerSumaGasto();
                   },       
                   error => { console.log(JSON.stringify(error));
                   });   
               }
 
+              //Metodo para obtener el estado de resultado
               obtenerEstadoResultados(){
                 this.resumenTransaccionService.obtenerEstadoResultadotoService(this.filtroEstadoResultados).subscribe(resultado => {
                       this.estadoResultados = resultado;
