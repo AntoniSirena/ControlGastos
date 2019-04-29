@@ -143,7 +143,15 @@ export class ResumenTransaccionComponent implements OnInit {
               //Metodo para obtener el estado de resultado
               obtenerEstadoResultados(){
                 this.resumenTransaccionService.obtenerEstadoResultadotoService(this.filtroEstadoResultados).subscribe(resultado => {
-                      this.estadoResultados = resultado;
+                      this.estadoResultados = resultado.Resultado;
+
+                      this.resumenIngresos = resultado.Ingreso;
+                      this.sumaIngreso = 0; //reseteo la variable
+                      this.obtenerSumaIngreso();
+
+                      this.resumenGastos = resultado.Gasto;
+                      this.sumaGasto = 0; //reseteo la variable
+                      this.obtenerSumaGasto();
                     },       
                     error => { console.log(JSON.stringify(error));
                     });   
