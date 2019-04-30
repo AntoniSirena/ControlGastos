@@ -151,7 +151,7 @@ export class ResumenTransaccionComponent implements OnInit {
 
                       this.resumenGastos = resultado.Gasto;
                       this.sumaGasto = 0; //reseteo la variable
-                      this.obtenerSumaGasto();
+                      this.obtenerSumaGasto();3
                     },       
                     error => { console.log(JSON.stringify(error));
                     });   

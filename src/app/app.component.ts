@@ -27,8 +27,13 @@ export class AppComponent implements OnInit {
       this.isCustomLayout = value;
     });
     
-   this.rutaActual = window.location.href;
-
+     if(window.location.hash == "#/")
+     {
+      this.router.navigate(['/login']);
+     }
+     else{
+      this.rutaActual = window.location.href;
+     }
   }
   
 }
