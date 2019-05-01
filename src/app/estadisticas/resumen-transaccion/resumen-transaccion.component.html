@@ -75,12 +75,39 @@
             <span class="pading">Gastos : {{item.Gastos | number}}</span>
             <span class="pading" [ngStyle]="{'color': item.Diferencia >= '0' ? 'blue' : 'red'}">Beneficio : {{item.Diferencia | number}}</span>
             </div>
-    
+
+            <br>
+            <div id="detalle">Detalles</div>
+
+            <!--Tabla -->
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Concepto</th>
+                        <th>Monto</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let item of resumenIngresosGastos">
+                        <td [ngStyle]="{'background-color': item.Origen == 'ingreso' ? 'rgb(183, 233, 229)' : 'rgb(238, 157, 164)'}" >{{item.Conceptos}}</td>
+                        <td [ngStyle]="{'background-color': item.Origen == 'ingreso' ? 'rgb(183, 233, 229)' : 'rgb(238, 157, 164)'}" >{{item.Monto | number}}</td>
+                    </tr>
+                </tbody>
+                <!-- <tfoot>
+                <tr class="ftable">
+                    <td>Total</td>
+                    <td>{{sumaIngreso | number}}</td>
+                </tr>
+                </tfoot> -->
+            </table>
+
     </mk-box>
     <!--Fin del componente -->
     
         
     <!--Componente tipo acordion ingresos -->
+    <br>
     <br>
     <mk-box header="Ingresos" [isCollapsable]="true" [isRemovable]="false" contentClasses="table-responsive">
 
@@ -170,8 +197,8 @@
 
             <tbody>
                 <tr *ngFor="let item of resumenIngresos">
-                    <td>{{item.Conceptos}}</td>
-                    <td>{{item.Monto | number}}</td>
+                    <td class="table-ingreso">{{item.Conceptos}}</td>
+                    <td class="table-ingreso">{{item.Monto | number}}</td>
                 </tr>
             </tbody>
             <tfoot>
@@ -275,8 +302,8 @@
 
             <tbody>
                 <tr *ngFor="let item of resumenGastos">
-                    <td>{{item.Conceptos}}</td>
-                    <td>{{item.Monto | number}}</td>
+                    <td class="table-gasto">{{item.Conceptos}}</td>
+                    <td class="table-gasto">{{item.Monto | number}}</td>
                 </tr>
             </tbody>
             <tfoot>

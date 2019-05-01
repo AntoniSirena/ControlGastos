@@ -51,6 +51,23 @@
 
 .ftable{
     font-weight:bold;
-    background-color: rgb(183, 233, 229);
     font-size: 1pc;
+}
+
+#detalle{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.3pc;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.table-ingreso{
+    background-color: rgb(183, 233, 229); 
+}
+
+.table-gasto{
+    background-color: rgb(238, 157, 164);
 }

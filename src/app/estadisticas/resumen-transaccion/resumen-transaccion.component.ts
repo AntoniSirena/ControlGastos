@@ -25,16 +25,19 @@ export class ResumenTransaccionComponent implements OnInit {
   tiposConceptosGastos: any = [];
   tiposConceptosIngresos: any = [];
 
+  estadoResultados: any= [];
+  resumenIngresosGastos: any = [];
   resumenIngresos: any = [];
   resumenGastos: any= [];
-  estadoResultados: any= [];
+
+  sumaIngreso: Number = 0;
+  sumaGasto: Number = 0;
+
 
   filtroResumenTransaccionesIngresos: any = { FechaInicial: '', FechaFinal: '', ConceptoId: '', PeriodoId: '', SemanaId: '', AreaId: ''};
   filtroResumenTransaccionesGastos: any = { FechaInicial: '', FechaFinal: '', ConceptoId: '', PeriodoId: '', SemanaId: '', AreaId: ''};
   filtroEstadoResultados: any = { FechaInicial: '', FechaFinal: '', ConceptoId: '', PeriodoId: '', SemanaId: '', AreaId: ''};
 
-  sumaIngreso: Number = 0;
-  sumaGasto: Number = 0;
   
 
   ngOnInit() {
@@ -75,6 +78,7 @@ export class ResumenTransaccionComponent implements OnInit {
     
         }
 
+      
         //Metodo para obtener el monto total de ingreso
         obtenerSumaIngreso(){
         this.resumenIngresos.forEach(element =>{
@@ -144,6 +148,9 @@ export class ResumenTransaccionComponent implements OnInit {
               obtenerEstadoResultados(){
                 this.resumenTransaccionService.obtenerEstadoResultadotoService(this.filtroEstadoResultados).subscribe(resultado => {
                       this.estadoResultados = resultado.Resultado;
+
+                      //concatenacion del arreglo ingreso con el de gasto
+                      this.resumenIngresosGastos = resultado.Ingreso.concat(resultado.Gasto);                      
 
                       this.resumenIngresos = resultado.Ingreso;
                       this.sumaIngreso = 0; //reseteo la variable
