@@ -1,0 +1,17 @@
+#numeroCuenta{
+    border-radius: 10px;
+}
+
+#tipoCuenta{
+    border-radius: 10px;
+}
+
+#banco{
+    border-radius: 10px;
+}
+
+.class-style{
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}

@@ -37,6 +37,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RazonesAnulacionTransaccionComponent } from './mantenimientos/razones-anulacion-transaccion/razones-anulacion-transaccion.component';
 import { UsersComponent } from './mantenimientos/users/users.component';
 import { PortadaComponent } from './portada/portada.component';
+import { BancoComponent } from './mantenimientos/banco/banco/banco.component';
+import { CuentaComponent } from './mantenimientos/banco/cuenta/cuenta.component';
+import { TransaccionBancoComponent } from './mantenimientos/banco/transaccion-banco/transaccion-banco.component';
 
 @NgModule({
   imports: [
@@ -67,7 +70,11 @@ import { PortadaComponent } from './portada/portada.component';
     ResumenTransaccionComponent,
     RazonesAnulacionTransaccionComponent,
     UsersComponent,
-    PortadaComponent
+    PortadaComponent,
+    BancoComponent,
+    CuentaComponent,
+    TransaccionBancoComponent
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

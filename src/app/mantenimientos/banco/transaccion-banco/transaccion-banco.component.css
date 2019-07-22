@@ -1,0 +1,43 @@
+#tipoTransaccion{
+    border-radius: 10px;
+}
+
+#bancoOrigen{
+    border-radius: 10px;
+}
+
+#cuentaOrigen{
+    border-radius: 10px;
+}
+
+#bancoDestino{
+    border-radius: 10px;
+}
+
+#cuentaDestino{
+    border-radius: 10px;
+}
+
+#monto{
+    border-radius: 10px;
+}
+
+#nota{
+    border-radius: 10px;
+}
+
+#razonAjuste{
+    border-radius: 10px;
+}
+
+.class-style{
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.titulo-style{
+    text-align: left;
+    font-weight:bold;
+    color: red;
+}

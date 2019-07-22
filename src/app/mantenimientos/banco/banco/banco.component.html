@@ -1,0 +1,94 @@
+
+
+<br>
+
+<div id="formulario" class="container-fluid">
+  <form id="formulario" name="formulario">
+    <div class="row">
+          <div class="col-xs-10 col-sm-10 col-md-8">
+              
+                      <div class="col-xs-2 col-sm-2 col-md-2">
+                          <div class="form-group">
+                              <label for="controlCodigo">Codigo</label>
+                              <input type="text" 
+                              [(ngModel)]="banco.Codigo"
+                              class="form-control" 
+                              name="codigo" id="codigo" /> 
+                              <span class="class-style" *ngIf="!banco.Codigo">**</span>
+                          </div>
+                    </div>
+      
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                          <div class="form-group">
+                              <label for="controlSigla">Sigla</label>
+                              <input type="text" 
+                              [(ngModel)]="banco.Sigla"
+                              class="form-control" 
+                              name="sigla" id="sigla">
+                              <span class="class-style" *ngIf="!banco.Sigla">**</span>
+                          </div>
+                      </div>
+
+
+                      <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="form-group">
+                              <label for="controlNombre">Nombre</label>
+                              <input type="text" 
+                              [(ngModel)]="banco.Nombre"
+                              class="form-control" 
+                              name="nombre" id="nombre"/>
+                              <span class="class-style" *ngIf="!banco.Nombre">**</span>
+                          </div>
+                    </div>
+                
+              </div>
+    </div>
+  
+    <div class="row">
+          <div class="col-xs-8 col-sm-4 col-md-4">
+                      <div class="col-xs-4 col-sm-2 col-md-2" *ngIf="!valor">
+                        <button (click)="agregar()" 
+                        class="btn btn-primary" 
+                        id="agregar"
+                        [disabled]="!banco.Codigo || !banco.Sigla || !banco.Nombre" >Agregar</button>
+                      </div>
+  
+                    <div class="col-xs-4 col-sm-2 col-md-2" *ngIf="valor" >
+                      <button (click)="actualizar()" 
+                      class="btn btn-primary"
+                      id="actualizar" 
+                      [disabled]="!banco.Codigo || !banco.Sigla || !banco.Nombre" >Actualizar</button>
+                      </div>
+                
+              </div>
+    </div>
+
+  </form>
+  
+</div>
+
+
+<br>
+<br>
+<br>
+<table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
+[dtTrigger]="dtTrigger" id="datatable">
+<thead>
+<tr>
+  <th>Editar</th>
+  <th>Eliminar <input type="checkbox" [(ngModel)]="check"> </th>
+  <th>Codigo</th>
+  <th>Sigla</th>
+  <th>Nombre</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let item of bancos">
+  <td> <button id="editar" (click)="editar(item.Id)" class="btn btn-primary" >Edit</button> </td>
+  <td> <button id="Eliminar" (click)="eliminar(item.Id)" class="btn btn-danger" [disabled]="!check" >Elim</button> </td>
+  <td>{{ item.Codigo }}</td>
+  <td>{{ item.Sigla }}</td>
+  <td>{{ item.Nombre}}</td>
+</tr>
+</tbody>
+</table>

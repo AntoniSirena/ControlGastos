@@ -1,0 +1,285 @@
+
+
+<div id="formulario" class="container-fluid">
+
+  <h3 class="titulo-style" *ngIf="transaccion.TipoTransaccionId == 1">Deposito</h3>
+  <h3 class="titulo-style" *ngIf="transaccion.TipoTransaccionId == 2">Retiro</h3>
+  <h3 class="titulo-style" *ngIf="transaccion.TipoTransaccionId == 3">Transferencia</h3>
+  <h3 class="titulo-style" *ngIf="transaccion.TipoTransaccionId == 4">Ajuste</h3>
+
+  <br>
+  <div class="row">
+        <div class="col-xs-10 col-sm-10 col-md-8">
+
+                  <div class="col-xs-2 col-sm-2 col-md-2">
+                      <div class="form-group">
+                          <label for="controlTipoTransaccion">Tipo de transaccion</label>
+                          <select class="form-control" id="tipoTransaccion" [(ngModel)]="transaccion.TipoTransaccionId">
+                              <option *ngFor="let item of tiposTransaccion" [value]="item.Id">{{item.Descripcion}}</option>
+                          </select>
+                          <span class="class-style" *ngIf="!transaccion.TipoTransaccionId">**</span>
+                      </div>
+                  </div>
+
+                  <div class="col-xs-3 col-sm-3 col-md-3" *ngIf="transaccion.TipoTransaccionId == 4">
+                      <div class="form-group">
+                          <label for="controlRazonAjuste">Razon de ajuste</label>
+                          <select class="form-control" id="razonAjuste" [(ngModel)]="transaccion.RazonAjusteId">
+                              <option *ngFor="let item of razonesAjustes " [value]="item.Id">{{item.Descripcion}}</option>
+                          </select>
+                          <span class="class-style" *ngIf="!transaccion.RazonAjusteId">**</span>
+                      </div>
+                   </div>
+
+                   <div class="col-xs-2 col-sm- col-md-">
+                      <div class="form-group">
+                          <label for="controlMonto">Monto</label>
+                          <input type="number" 
+                          [(ngModel)]="transaccion.Monto"
+                          class="form-control" 
+                          id="monto"/>
+                          <span class="class-style" *ngIf="!transaccion.Monto">**</span>
+                      </div>
+                  </div>
+              
+          </div>
+
+  </div>
+
+  <div class="row">
+          <div class="col-xs-10 col-sm-10 col-md-8">
+
+                <div class="col-xs-3 col-sm-3 col-md-4">
+                    <div class="form-group">
+                        <label for="controlBancoOrigen">Banco de origen</label>
+                        <select class="form-control" id="bancoOrigen" [(ngModel)]="transaccion.BancoOrigenId" (ngModelChange)="obtenerCuentaOrigen($event)">
+                            <option *ngFor="let item of bancos " [value]="item.Id">{{item.Nombre}}</option>
+                        </select>
+                        <span class="class-style" *ngIf="!transaccion.BancoOrigenId">**</span>
+                    </div>
+                 </div>
+
+                 <div class="col-xs-3 col-sm-3 col-md-3">
+                    <div class="form-group">
+                        <label for="controlCuentaOrigen">Cuenta de origen</label>
+                        <select class="form-control" id="cuentaOrigen" [(ngModel)]="transaccion.CuentaOrigenId">
+                            <option *ngFor="let item of cuentasOrigen " [value]="item.Id">{{item.NumeroCuenta}}</option>
+                        </select>
+                        <span class="class-style" *ngIf="!transaccion.CuentaOrigenId">**</span>
+                    </div>
+                 </div>
+                
+            </div>
+
+  </div>
+
+  <div class="row">
+        <div class="col-xs-10 col-sm-10 col-md-8">
+              
+              <div class="col-xs-3 col-sm-3 col-md-4" *ngIf="transaccion.TipoTransaccionId == 3">
+                  <div class="form-group">
+                      <label for="controlBancoOrigen">Banco de destino</label>
+                      <select class="form-control" id="bancoDestino" [(ngModel)]="transaccion.BancoDestinoId" (ngModelChange)="obtenerCuentaDestino($event)">
+                          <option *ngFor="let item of bancos " [value]="item.Id">{{item.Nombre}}</option>
+                      </select>
+                      <span class="class-style" *ngIf="!transaccion.BancoDestinoId">**</span>
+                  </div>
+               </div>
+
+               <div class="col-xs-3 col-sm-3 col-md-3" *ngIf="transaccion.TipoTransaccionId == 3">
+                  <div class="form-group">
+                      <label for="controlCuentaDestino">Cuenta de destino</label>
+                      <select class="form-control" id="cuentaDestino" [(ngModel)]="transaccion.CuentaDestinoId">
+                          <option *ngFor="let item of cuentasDestino " [value]="item.Id">{{item.NumeroCuenta}}</option>
+                      </select>
+                      <span class="class-style" *ngIf="!transaccion.CuentaDestinoId">**</span>
+                  </div>
+               </div>
+              
+          </div>
+
+  </div>
+
+  <div class="row">
+      <div class="col-xs-10 col-sm-10 col-md-8">
+          <div class="col-xs-6 col-sm-6 col-md-7">
+              <div class="form-group">
+                  <label for="controlNota">Nota</label>
+                  <input type="text" 
+                  [(ngModel)]="transaccion.Nota"
+                  class="form-control" 
+                  id="nota"/>
+                  <span class="class-style" *ngIf="!transaccion.Nota">**</span>
+              </div>
+          </div>
+
+        </div>
+  </div>
+  
+  <div class="row">
+          <div class="col-xs-8 col-sm-4 col-md-4">
+                      <div class="col-xs-4 col-sm-2 col-md-2" *ngIf="!valor">
+                        <button (click)="agregar()"
+                        class="btn btn-primary" 
+                        id="agregar"
+                        [disabled]="!transaccion.TipoTransaccionId || !transaccion.BancoOrigenId || !transaccion.CuentaOrigenId || !transaccion.Monto">Grabar</button>
+                      </div>             
+              </div>
+   </div>
+  
+</div>
+
+
+<br>
+<br>
+<mk-tabs header="" tabsColor = "red" >
+
+    <!-- Depositos -->
+    <mk-tab header="Depositos">
+
+        <div id="deposito" class="class-style">Listado de depositos</div>
+
+        <br>
+        <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
+        [dtTrigger]="dtTrigger" id="datatable">
+        <thead>
+          <tr>
+            <th>Número</th>
+            <th>Fecha</th>
+            <th>Banco</th>
+            <th>Cuenta</th>
+            <th>Monto</th>
+            <th>Nota</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of depositos">
+            <td>{{item.NumeroTrans}}</td>
+            <td>{{item.FechaRegistro | date:'dd-MM-yyyy HH:mm'}}</td>
+            <td>{{item.BancoOrigen.Nombre}}</td>
+            <td>{{item.CuentaOrigen.NumeroCuenta}}</td>
+            <td style="font-weight: bold">{{item.Monto | number}}</td>
+            <td>{{item.Nota}}</td>
+            <td>{{item.Estatus.Descripcion}}</td>
+          </tr>
+        </tbody>
+        </table>
+     
+    </mk-tab>
+
+
+     <!-- Retiros -->
+     <mk-tab header="Retiros">
+
+        <div id="retiro" class="class-style">Listado de retiros</div>
+
+        <br>
+        <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
+        [dtTrigger]="dtTrigger" id="datatable">
+        <thead>
+          <tr>
+            <th>Número</th>
+            <th>Fecha</th>
+            <th>Banco</th>
+            <th>Cuenta</th>
+            <th>Monto</th>
+            <th>Nota</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of retiros">
+            <td>{{item.NumeroTrans}}</td>
+            <td>{{item.FechaRegistro | date:'dd-MM-yyyy HH:mm'}}</td>
+            <td>{{item.BancoOrigen.Nombre}}</td>
+            <td>{{item.CuentaOrigen.NumeroCuenta}}</td>
+            <td style="font-weight: bold">{{item.Monto | number}}</td>
+            <td>{{item.Nota}}</td>
+            <td>{{item.Estatus.Descripcion}}</td>
+          </tr>
+        </tbody>
+        </table>
+     
+    </mk-tab>
+
+
+    <!-- Transferencia -->
+    <mk-tab header="Transferencias">
+
+        <div id="transferencia" class="class-style">Listado de transferencias</div>
+
+        <br>
+        <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
+        [dtTrigger]="dtTrigger" id="datatable">
+        <thead>
+          <tr>
+            <th>Número</th>
+            <th>Fecha</th>
+            <th>Banco de origen</th>
+            <th>Cuenta de origen</th>
+            <th>Banco de destino</th>
+            <th>Cuenta de destino</th>
+            <th>Monto</th>
+            <th>Nota</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of trasferencias">
+            <td>{{item.NumeroTrans}}</td>
+            <td>{{item.FechaRegistro | date:'dd-MM-yyyy HH:mm'}}</td>
+            <td>{{item.BancoOrigen.Nombre}}</td>
+            <td>{{item.CuentaOrigen.NumeroCuenta}}</td>
+            <td>{{item.BancoDestino.Nombre}}</td>
+            <td>{{item.CuentaDestino.NumeroCuenta}}</td>
+            <td style="font-weight: bold">{{item.Monto | number}}</td>
+            <td>{{item.Nota}}</td>
+            <td>{{item.Estatus.Descripcion}}</td>
+          </tr>
+        </tbody>
+        </table>
+     
+    </mk-tab>
+  
+
+    <!-- Ajustes -->
+    <mk-tab header="Ajustes">
+
+        <div id="ajuste" class="class-style">Listado de ajustes</div>
+
+        <br>
+        <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
+        [dtTrigger]="dtTrigger" id="datatable">
+        <thead>
+          <tr>
+            <th>Número</th>
+            <th>Fecha</th>
+            <th>Banco</th>
+            <th>Cuenta</th>
+            <th>Razon de ajuste</th>
+            <th>Monto</th>
+            <th>Nota</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of ajustes">
+            <td>{{item.NumeroTrans}}</td>
+            <td>{{item.FechaRegistro | date:'dd-MM-yyyy HH:mm'}}</td>
+            <td>{{item.BancoOrigen.Nombre}}</td>
+            <td>{{item.CuentaOrigen.NumeroCuenta}}</td>
+            <td>{{item.RazonAjuste.Descripcion}}</td>
+            <td style="font-weight: bold">{{item.Monto | number}}</td>
+            <td>{{item.Nota}}</td>
+            <td>{{item.Estatus.Descripcion}}</td>
+          </tr>
+        </tbody>
+        </table>
+     
+    </mk-tab>
+
+
+  </mk-tabs>
+
+

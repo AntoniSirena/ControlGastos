@@ -13,6 +13,9 @@ import { ResumenTransaccionComponent } from './estadisticas/resumen-transaccion/
 import { RazonesAnulacionTransaccionComponent } from './mantenimientos/razones-anulacion-transaccion/razones-anulacion-transaccion.component';
 import { UsersComponent } from './mantenimientos/users/users.component';
 import { PortadaComponent } from './portada/portada.component';
+import { BancoComponent } from './mantenimientos/banco/banco/banco.component';
+import { CuentaComponent } from './mantenimientos/banco/cuenta/cuenta.component';
+import { TransaccionBancoComponent } from './mantenimientos/banco/transaccion-banco/transaccion-banco.component';
 
 
 const routes: Routes = [
@@ -234,6 +237,38 @@ const routes: Routes = [
         component: ResumenTransaccionComponent,
         data: {
           title: 'Resumen',
+        }
+      }
+
+    ]
+  },
+
+  //Banco
+  {
+    path: 'mantenimientos/banco',
+    data: {
+      title: 'Banco',
+    },
+    children: [
+      {
+        path: 'banco',
+        component: BancoComponent,
+        data: {
+          title: 'Mantenimiento de Banco',
+        }
+      },
+      {
+        path: 'cuenta',
+        component: CuentaComponent,
+        data: {
+          title: 'Mantenimiento de Cuenta',
+        }
+      },
+      {
+        path: 'transaccion-banco',
+        component: TransaccionBancoComponent,
+        data: {
+          title: '',
         }
       }
 

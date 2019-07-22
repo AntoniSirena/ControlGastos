@@ -54,6 +54,16 @@ export const adminLteConf = {
     {label: 'Estadísticas', iconClasses: 'fa fa-pie-chart', 
     children: [
         {label: 'Resumen', route: 'estadisticas/resumen-transaccion'}  
+    ]},
+
+
+    //Banco
+    {label: 'Banco', iconClasses: 'fa fa-pie-chart', 
+    children: [
+        {label: 'Bancon', route: 'mantenimientos/banco/banco'},
+        {label: 'Cuenta', route: 'mantenimientos/banco/cuenta'},
+        {label: 'Transaccion', route: 'mantenimientos/banco/transaccion-banco'}
+
     ]}
 
     

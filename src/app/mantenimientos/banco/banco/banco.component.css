@@ -1,0 +1,17 @@
+#codigo{
+    border-radius: 10px;
+}
+
+#sigla{
+    border-radius: 10px;
+}
+
+#nombre{
+    border-radius: 10px;
+}
+
+.class-style{
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
