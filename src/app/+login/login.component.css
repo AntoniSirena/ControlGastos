@@ -10,3 +10,9 @@
 #header{
   color: dodgerblue;
 }
+
+.class-style_validation{
+  color: red;
+  font-weight: bold;
+  font-size: 15px;
+}
